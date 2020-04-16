@@ -1,0 +1,4 @@
+com\dtu\AISSystem\config\WebMvcConfig.class
+com\dtu\AISSystem\config\ApplicationContextConfig.class
+com\dtu\AISSystem\controller\HelloController.class
+com\dtu\AISSystem\config\SpringWebAppInitializer.class
