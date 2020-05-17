@@ -1,4 +1,13 @@
+com\dtu\AISSystem\dao\UserDAO.class
+com\dtu\AISSystem\config\SpringSecurityInitializer.class
+com\dtu\AISSystem\mapper\UserMapper.class
+com\dtu\AISSystem\authentication\MyDBAuthenticationService.class
+com\dtu\AISSystem\controller\HomeController.class
+com\dtu\AISSystem\dao\UserDAOImpl.class
 com\dtu\AISSystem\config\WebMvcConfig.class
-com\dtu\AISSystem\config\ApplicationContextConfig.class
-com\dtu\AISSystem\controller\HelloController.class
+com\dtu\AISSystem\controller\ApiController.class
+com\dtu\AISSystem\config\WebSecurityConfig.class
 com\dtu\AISSystem\config\SpringWebAppInitializer.class
+com\dtu\AISSystem\model\UserInfo.class
+com\dtu\AISSystem\config\ApplicationContextConfig.class
+com\dtu\AISSystem\controller\AuthenticationController.class

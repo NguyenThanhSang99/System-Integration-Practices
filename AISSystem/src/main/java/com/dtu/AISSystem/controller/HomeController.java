@@ -4,14 +4,19 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
  
 @Controller
-public class HelloController {
+public class HomeController {
  
-    @RequestMapping("/hello")
+    @RequestMapping("/permit")
     public String hello(Model model) {
         
-        model.addAttribute("greeting", "Hello Spring MVC");
+        return "home";
         
-        return "hello";
+    }
+    
+    @RequestMapping("/home")
+    public String displayHomePage(Model model) {
+        
+        return "home";
         
     }
  
