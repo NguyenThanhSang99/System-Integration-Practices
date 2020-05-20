@@ -40,7 +40,7 @@
 		<div id="error">
 
 			Login Failed!!!<br /> Reason :
-			${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message}
+			${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message == "Bad credentials" ? "Account does not exist." : sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message}
 
 		</div>
 	</c:if>
@@ -80,14 +80,17 @@
 						</div>
 						<div class="form-group">
 							<input type="text" name="username" placeholder="Username"
-								class="form-input" required="required" autofocus="autofocus">
+								class="form-input" pattern="[0-9A-Za-z]{4,30}" required="required" 
+								title="Must not contain specical characters and lenght from 4 or 30 characters"
+								autofocus="autofocus">
 							<div class="input-icon">
 								<i class="fas fa-user"></i>
 							</div>
 						</div>
 						<div class="form-group">
 							<input type="password" name="password" placeholder="Password"
-								class="form-input" required="required" autofocus="autofocus">
+								class="form-input" pattern="[0-9A-Za-z]{4,30}" required="required" 
+								title="Must not contain specical characters and lenght from 4 or 30 characters" autofocus="autofocus">
 							<div class="input-icon">
 								<i class="fas fa-user-lock"></i>
 							</div>
