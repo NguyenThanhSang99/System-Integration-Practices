@@ -21,7 +21,7 @@ public class MyDBAuthenticationService implements UserDetailsService {
     @Autowired
     private UserDAO userInfoDAO;
  
-    @Override
+    //@Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {    	
         UserInfo userInfo = userInfoDAO.findUser(username);
  

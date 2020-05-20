@@ -1,7 +1,14 @@
-const p = document.getElementById('authors'); // Get the list where we will place our authors
-const url = '/AISSystem/api/v1/user';
-fetch(url).then(function(response) {
-  response.text().then(function(text) {
-    p.innerHTML = text;
-  });
-});
+function getData(){
+	const url = "http://localhost:8080/springapp/api/v1/user";
+	fetch(url, { mode: 'no-cors'})
+	  .then(blob => blob.json())
+	  .then(data => {
+	    console.table(data);
+	    return data;
+	  })
+	  .catch(e => {
+	    console.log(e);
+	    return e;
+	  });
+}
+getData();

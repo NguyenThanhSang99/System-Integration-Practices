@@ -19,8 +19,7 @@ public class UserDAOImpl extends JdbcDaoSupport implements UserDAO {
     public UserDAOImpl(DataSource dataSource) {
         this.setDataSource(dataSource);
     }
-  
- 
+    /*
     @Override
     public UserInfo findUser(String userName) {
         String sql = "Select u.User_name,u.Password "//
@@ -34,5 +33,20 @@ public class UserDAOImpl extends JdbcDaoSupport implements UserDAO {
         } catch (EmptyResultDataAccessException e) {
             return null;
         }
-    }     
+    }    
+    */
+
+	public UserInfo findUser(String userName) {
+		String sql = "Select u.User_name,u.Password "//
+                + " from Users u where u.User_name = ? ";
+ 
+        Object[] params = new Object[] { userName };
+        UserMapper mapper = new UserMapper();
+        try {
+            UserInfo userInfo = this.getJdbcTemplate().queryForObject(sql, params, mapper);
+            return userInfo;
+        } catch (EmptyResultDataAccessException e) {
+            return null;
+        }
+	} 
 }
