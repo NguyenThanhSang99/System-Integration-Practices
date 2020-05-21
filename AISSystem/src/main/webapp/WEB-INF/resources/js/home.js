@@ -24,8 +24,6 @@ function getData(){
                         +"</td><td>"+(data[i].Zip==null?"":data[i].Zip)
                         +"</td><td>"+(data[i].Email==null?"":data[i].Email)
                         +"</td><td>"+(data[i].Phone_Number==null?"":data[i].Phone_Number)
-                        +"</td><td>"+(data[i].Drivers_License==null?"":data[i].Drivers_License)
-                        +"</td><td>"+(data[i].Marital_Status==null?"":data[i].Marital_Status)
                         +"</td><td>"+(data[i].Gender==true?"Male":"Female")
                         +"</td></tr>";
                         if(data[i].Gender==true){
