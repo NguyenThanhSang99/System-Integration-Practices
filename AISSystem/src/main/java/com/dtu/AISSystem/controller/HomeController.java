@@ -20,7 +20,7 @@ public class HomeController {
 	@Autowired
     private PayRatesService payService;
 	
-    @RequestMapping("/home")
+    @RequestMapping(value={"/", "/home"})
     public String displayHomePage(Model model) {
         
         return "home";
