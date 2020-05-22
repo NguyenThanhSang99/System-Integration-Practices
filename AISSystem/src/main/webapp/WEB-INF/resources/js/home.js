@@ -1,6 +1,7 @@
-var male = 0;
-var len = 0;
-var male_ratio = 0;
+let len = {value:0};
+let share_holders = new Array();
+let male_ratio = {value:0};
+var value = 0;
 function getData(){
 	$.ajax({
         type: 'POST',
@@ -8,11 +9,12 @@ function getData(){
         data: $('#personals').serialize(),
         dataType:"json", //to parse string into JSON object,
         success: function(data){ 
+        	var male = 0;
             if(data){
-                len = data.length;
+                len.value = data.length;
                 var txt = "";
-                if(len > 0){
-                    for(var i=0;i<len;i++){
+                if(len.value > 0){
+                    for(var i=0;i<len.value;i++){
                         txt += "<tr><td>"+data[i].Employee_ID
                         +"</td><td>"+(data[i].First_Name==null?"":data[i].First_Name)
                         +"</td><td>"+(data[i].Last_Name==null?"":data[i].Last_Name)
@@ -29,9 +31,16 @@ function getData(){
                         if(data[i].Gender==true){
                         	male++;
                         }
+                        
+                        if(data[i].Shareholder_Status == true){
+                        	let share_holder = {
+                        			label: data.First_Name  + data.Last_Name,
+                        			y: value += 80-i*3
+                        	}
+                        	share_holders.push(share_holder)
+                        }
                     }
-                    male_ratio = male*100/len;
-                    
+                    male_ratio.value = male*100/len.value;  
                     if(txt != ""){
                         $("#table").append(txt).removeClass("hidden");
                     }
@@ -43,26 +52,38 @@ function getData(){
         }
     });
 }
-getData();
-
 window.onload = function() {
-
-	var chart = new CanvasJS.Chart("chartContainer", {
-		animationEnabled: true,
-		title: {
-			text: "Employee Gender Chart"
-		},
-		data: [{
-			type: "pie",
-			startAngle: 240,
-			yValueFormatString: "##0.00\"%\"",
-			indexLabel: "{label} {y}",
-			dataPoints: [
-				{y: male_ratio, label: "Male: "},
-				{y: 100-male_ratio, label: "Female: "}
+	getData();
+	setTimeout(function() {
+		var chart = new CanvasJS.Chart("chartContainer2", {
+			animationEnabled: true,
+			title: {
+				text: "Employee Gender Chart"
+			},
+			data: [{
+				type: "pie",
+				startAngle: 240,
+				yValueFormatString: "##0.00\"%\"",
+				indexLabel: "{label} {y}",
+				dataPoints: [
+					{y: male_ratio.value, label: "Male: "},
+					{y: 100-male_ratio.value, label: "Female: "}
+				]
+			}]
+		});chart.render();}, 200);
+	setTimeout(function() {
+		var chart = new CanvasJS.Chart("chartContainer1", {
+			title:{
+				text: "Total Earning by Shareholder"              
+			},
+			data: [              
+			{
+				// Change type to "doughnut", "line", "splineArea", etc.
+				type: "column",
+				indexLabel: "{label} {y}",
+				dataPoints: share_holders
+			}
 			]
-		}]
-	});
-	chart.render();
-
+		});
+		chart.render();}, 200);
 }

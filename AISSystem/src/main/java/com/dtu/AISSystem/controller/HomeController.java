@@ -27,19 +27,25 @@ public class HomeController {
         
     }
     
-    @RequestMapping("/employee")
+    @RequestMapping("/worktime")
     public String displayListEmployee(Model model) {
     	List<Employee> bookList = employeeService.getEmployee();
 		model.addAttribute("employeeList", bookList);
-		return "employeeList";
+		return "worktime";
         
     }
     
-    @RequestMapping("/payrates")
+    @RequestMapping("/benefit")
     public String displayListPayRates(Model model) {
     	List<PayRates> bookList = payService.getPayRates();
 		model.addAttribute("payRatesList", bookList);
-		return "payratesList";
+		return "benefit";
+        
+    }
+    
+    @RequestMapping("/notification")
+    public String displayNotification(Model model) {
+		return "notification";
         
     }
  
