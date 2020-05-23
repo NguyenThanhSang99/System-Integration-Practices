@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>  
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,19 +19,31 @@
 			<div class="personal-list">
 				<table id="table" class="hidden" border="1" cellpadding="8" cellspacing="1">
 				    <tr>
-				        <th>Employee ID</th>
 		        		<th>First Name</th>
-		        		<th>Last Name"</th>
-		        		<th>Middle Initial</th>
+		        		<th>Last Name</th>
 		        		<th>Address1</th>
 		        		<th>Address2</th>
 		        		<th>City</th>
 		        		<th>State</th>
-		        		<th>Zip</th>
+		        		<th>SSN</th>
 		        		<th>Email</th>
 		        		<th>Phone Number</th>
 		        		<th>Gender</th>
 				    </tr>
+				    <c:forEach items="${employeeList}" var="emp" varStatus="loop">
+						<tr>
+							  <td>${emp.firstName}</td>
+							  <td>${emp.lastName}</td>
+							  <td></td>
+							  <td></td>
+							  <td></td>
+							  <td></td>
+							  <td>${emp.ssn}</td>
+							  <td></td>
+							  <td></td>
+							  <td></td>
+						</tr>
+					</c:forEach>
 				</table>
 			</div>
 		</div>

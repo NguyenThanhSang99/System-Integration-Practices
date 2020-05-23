@@ -22,23 +22,22 @@ public class HomeController {
 	
     @RequestMapping(value={"/", "/home"})
     public String displayHomePage(Model model) {
-        
+    	List<Employee> employeeList = employeeService.getEmployee();
+		model.addAttribute("employeeList", employeeList);
         return "home";
         
     }
     
     @RequestMapping("/worktime")
     public String displayListEmployee(Model model) {
-    	List<Employee> bookList = employeeService.getEmployee();
-		model.addAttribute("employeeList", bookList);
 		return "worktime";
         
     }
     
     @RequestMapping("/benefit")
     public String displayListPayRates(Model model) {
-    	List<PayRates> bookList = payService.getPayRates();
-		model.addAttribute("payRatesList", bookList);
+    	List<PayRates> payratesList = payService.getPayRates();
+		model.addAttribute("payRatesList", payratesList);
 		return "benefit";
         
     }
