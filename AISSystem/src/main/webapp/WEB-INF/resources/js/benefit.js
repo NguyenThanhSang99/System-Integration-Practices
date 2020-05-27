@@ -1,4 +1,34 @@
+function getData(){
+	$.ajax({
+        type: 'POST',
+        url: 'http://localhost:19335/api/BenefitPlans',
+        data: $('#benefit_plan_list').serialize(),
+        dataType:"json", //to parse string into JSON object,
+        success: function(data){ 
+            if(data){
+                var len = data.length;
+                var txt = "";
+                if(len > 0){
+                	for(var i=0;i<len;i++){
+        				txt += "<tr><td>"+(data[i].Plan_Name==null?"":data[i].Plan_Name)
+                        +"</td><td>"+(data[i].Deductable==null?"":data[i].Deductable)
+        				+"</td><td>"+(data[i].Percentage_CoPay==null?"":data[i].Percentage_CoPay)
+                        +"</td></tr>"                        
+                    } 
+                	if(txt != ""){
+                        $("#table").append(txt).removeClass("hidden");
+                    }
+                }
+            }
+        },
+        error: function(jqXHR, textStatus, errorThrown){
+            alert('Error: ' + textStatus + ': can not get data from HR');
+        }
+    });
+}
+
 window.onload = function () {
+	getData();
 	var chart = new CanvasJS.Chart("chartContainer", {
 		animationEnabled: true,
 		title: {

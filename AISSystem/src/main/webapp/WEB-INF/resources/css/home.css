@@ -3,8 +3,10 @@
 	width: 80vw;
 }
 h2 {
-	text-align:center; 
+	text-align:left;
+	margin-left: 50px; 
 	color:blue;
+	width: 30vW;
 }
 #chartContainer, #chartContainer2{
 	background: #ccc;
@@ -19,4 +21,29 @@ h2 {
 .div-table table{
 	margin-left: 50px;
 	width: 700px;
+	float: left;
+}
+
+.table-benefit table{
+	margin-left: 58vw;
+	width: 250px;
+}
+.caption {
+	border: inherit; 
+	background-color: lightgrey;
+	text-align: center;
+	color: Blue;
+	caption-side:top;
+	margin-top: 15px;
+}
+.red {
+	color: Red;
+}
+
+.green {
+	color: Green;
+}
+
+.blue {
+	color: Blue;
 }

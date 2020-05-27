@@ -19,8 +19,10 @@
 			<div id="chartContainer" class="chart"></div>
 			<div id="chartContainer2" class="chart"></div>
 			<div class = "div-table">
-				<h2>PayRates List</h2>
 				<table class="table" border="1" cellpadding="8" cellspacing="1">
+					<caption class="caption green">
+            			<span><strong>PayRates List</strong></span>
+        			</caption>
 					<thead class="thead-dark">
 						<tr>
 							<th>ID</th>
@@ -45,6 +47,21 @@
 				          </tr>
 						</c:forEach>
 					</tbody>
+		    	</table>
+			</div>
+			<div class = "table-benefit">
+				
+				<table id="table" class="table" border="1" cellpadding="8" cellspacing="1">
+					<caption class="caption blue">
+            			<span><strong>Benefit Plans List</strong></span>
+        			</caption>
+					<thead class="thead-dark">
+						<tr>
+							<th>Plan Name</th>
+							<th>Deductable</th>
+							<th>Percentage CoPay</th>
+						</tr>	
+					</thead>
 		    	</table>
 			</div>
 		</div>

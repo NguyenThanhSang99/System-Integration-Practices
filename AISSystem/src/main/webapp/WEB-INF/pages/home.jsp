@@ -19,8 +19,10 @@
 			<div id="chartContainer1" class="chart"></div>
 			<div id="chartContainer2" class="chart"></div>
 			<div class="div-table">
-				<h2>Employee List</h2>
 				<table id="table" class="table hidden" border="1" cellpadding="8" cellspacing="1">
+					<caption class="caption blue">
+            			<span><strong>Personal List</strong></span>
+        			</caption>
 					<thead class="thead-dark">
 						<tr>
 			        		<th scope="col">First Name</th>

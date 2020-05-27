@@ -18,8 +18,10 @@
 		<div class="content">
 			<div id="chartContainer" style="height: 400px; width: 100%;"></div>
 			<div class="div-table">
-				<h2>Employee Work Time List</h2>
 				<table id="table" class="table hidden" border="1" cellpadding="8" cellspacing="1">
+					<caption class="caption red">
+            			<span><strong>Employee Work Time List</strong></span>
+        			</caption>
 					<thead class="thead-dark">
 					    <tr>
 					        <th>Employee ID</th>
