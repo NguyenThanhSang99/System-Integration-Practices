@@ -9,8 +9,10 @@
 </head>
 <body>
 	<t:home>
-		<h1>This is Notification Page</h1>
-		<h4>Update later</h4>
+		<div class="content">
+			<h1>This is Notification Page</h1>
+			<h4>Update later</h4>
+		</div>
 	</t:home>
 </body>
 </html>

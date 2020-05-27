@@ -7,24 +7,33 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Work Time</title>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link rel="stylesheet" href="css/home.css">
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<script src="js/jquery.min.js"></script>
 <script type="text/javascript" src="js/worktime.js"></script>
 </head>
 <body>  
 	<t:home>
-		<h2 style="text-align:center; color:blue;">Employee Work Time List</h2>
-		<div class="personal-list">
-			<table id="table" class="hidden" border="1" cellpadding="8" cellspacing="1">
-			    <tr>
-			        <th>Employee ID</th>
-			        <th>First Name</th>
-	        		<th>Last Name</th>
-	        		<th>Department</th>
-	        		<th>Start Date</th>
-	        		<th>End Date</th>
-			    </tr>
-			</table>
+		<div class="content">
+			<div id="chartContainer" style="height: 400px; width: 100%;"></div>
+			<div class="div-table">
+				<h2>Employee Work Time List</h2>
+				<table id="table" class="table hidden" border="1" cellpadding="8" cellspacing="1">
+					<thead class="thead-dark">
+					    <tr>
+					        <th>Employee ID</th>
+					        <th>First Name</th>
+			        		<th>Last Name</th>
+			        		<th>Department</th>
+			        		<th>Start Date</th>
+			        		<th>End Date</th>
+					    </tr>
+				    </thead>
+				</table>
+			</div>
 		</div>
+		<script src="js/canvasjs.min.js"></script>
 	</t:home>
 </body>
 </html>

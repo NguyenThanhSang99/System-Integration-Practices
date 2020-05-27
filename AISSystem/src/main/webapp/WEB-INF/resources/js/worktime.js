@@ -28,9 +28,39 @@ function getData(){
             alert('Error: ' + textStatus + ': can not get data from HR');
         }
     });
-    var table = $('#table').DataTable();
-    table.draw();
 }
 window.onload = function() {
 	getData();
+	var chart = new CanvasJS.Chart("chartContainer", {
+		theme: "light2", // "light1", "light2", "dark1", "dark2"
+		animationEnabled: true,
+		title: {
+			text: "Time work of employee by month - 2019"
+		},
+		axisY: {
+			title: "Price(Person/month)",
+			includeZero: false
+		},
+		data: [{
+			type: "rangeColumn",
+			yValueFormatString: "##",
+			xValueFormatString: "MMM YYYY",
+			toolTipContent: "{x}<br>High: {y[0]}<br>Low: {y[1]}",
+			dataPoints: [		
+				{ x: new Date(2019, 0), y: [15, 40] },
+				{ x: new Date(2019, 1), y: [30, 55] },
+				{ x: new Date(2019, 2), y: [36, 42.54] },
+				{ x: new Date(2019, 3), y: [37, 48] },
+				{ x: new Date(2019, 4), y: [43, 50] },
+				{ x: new Date(2019, 5), y: [46, 52] },
+				{ x: new Date(2019, 6), y: [41, 50] },
+				{ x: new Date(2019, 7), y: [41, 51] },
+				{ x: new Date(2019, 8), y: [45, 50] },
+				{ x: new Date(2019, 9), y: [47, 53] },
+				{ x: new Date(2019, 10), y: [43, 50] },
+				{ x: new Date(2019, 11), y: [51, 57] }
+			]
+		}]
+	});
+	chart.render();
 }

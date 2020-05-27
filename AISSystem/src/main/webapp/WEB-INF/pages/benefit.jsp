@@ -7,38 +7,48 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Benefit</title>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link rel="stylesheet" href="css/home.css">
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<script src="js/jquery.min.js"></script>
 <script type="text/javascript" src="js/benefit.js"></script>
 </head>
 <body>  
 	<t:home>
-		<div id="chartContainer" style="height: 370px; width: 600px;"></div>
-		<h2 style="text-align:center; color:blue;">PayRates LIST</h2>
-		<table border="1" cellpadding="8" cellspacing="1">
-			<tr>
-	          <th>#</th>
-	          <th>ID</th>
-	          <th>PayRates Name</th>
-	          <th>Values</th>
-	          <th>Tax Percentage</th>
-	          <th>Pay Type</th>
-	          <th>Pay Amount</th>
-	          <th>PT Level C</th>
-			</tr>
-			<c:forEach items="${payRatesList}" var="payrates" varStatus="loop">
-	          <tr>
-	            <td>${loop.index}</td>
-	            <td>${payrates.idPayRates}</td>
-	            <td>${payrates.payRateName}</td>
-	            <td>${payrates.value}</td>
-	            <td>${payrates.taxPercentage}</td>
-	            <td>${payrates.payType}</td>
-	            <td>${payrates.payAmount}</td>
-	            <td>${payrates.ptLevelC}</td>
-	          </tr>
-			</c:forEach>
-    	</table>
-    	<script src="js/canvasjs.min.js"></script>
+		<div class="content">
+			<div id="chartContainer" class="chart"></div>
+			<div id="chartContainer2" class="chart"></div>
+			<div class = "div-table">
+				<h2>PayRates List</h2>
+				<table class="table" border="1" cellpadding="8" cellspacing="1">
+					<thead class="thead-dark">
+						<tr>
+							<th>ID</th>
+							<th>PayRates Name</th>
+							<th>Values</th>
+							<th>Tax Percentage</th>
+							<th>Pay Type</th>
+							<th>Pay Amount</th>
+							<th>PT Level C</th>
+						</tr>	
+					</thead>
+					<tbody>
+						<c:forEach items="${payRatesList}" var="payrates" varStatus="loop">
+				          <tr>
+				            <td>${payrates.idPayRates}</td>
+				            <td>${payrates.payRateName}</td>
+				            <td>${payrates.value}</td>
+				            <td>${payrates.taxPercentage}</td>
+				            <td>${payrates.payType}</td>
+				            <td>${payrates.payAmount}</td>
+				            <td>${payrates.ptLevelC}</td>
+				          </tr>
+						</c:forEach>
+					</tbody>
+		    	</table>
+			</div>
+		</div>
+		<script src="js/canvasjs.min.js"></script>
 	</t:home>
 </body>
 </html>

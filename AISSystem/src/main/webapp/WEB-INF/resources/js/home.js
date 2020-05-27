@@ -102,17 +102,45 @@ window.onload = function() {
 		});chart.render();}, 200);
 	setTimeout(function() {
 		var chart = new CanvasJS.Chart("chartContainer1", {
-			title:{
-				text: "Total Earning by Shareholder"              
+			animationEnabled: true,
+			title: {
+				text: "Employee statistics by country 2019"
 			},
-			data: [              
-			{
-				// Change type to "doughnut", "line", "splineArea", etc.
-				type: "column",
-				indexLabel: "{label} {y}",
-				dataPoints: share_holders
-			}
-			]
+			axisX: {
+				interval: 1
+			},
+			axisY: {
+				title: "Number of employees",
+				scaleBreaks: {
+					type: "wavy",
+					customBreaks: [{
+						startValue: 80,
+						endValue: 210
+						},
+						{
+							startValue: 230,
+							endValue: 600
+						}
+				]}
+			},
+			data: [{
+				type: "bar",
+				toolTipContent: "<img src=\"https://canvasjs.com/wp-content/uploads/images/gallery/javascript-column-bar-charts/\"{url}\"\" style=\"width:40px; height:20px;\"> <b>{label}</b><br>Amount: {y}person",
+				dataPoints: [
+					{ label: "Israel", y: 17, url: "israel.png" },
+					{ label: "United Arab Emirates", y: 22, url: "uae.png" },
+					{ label: "Brazil", y: 23, url: "brazil.png"},
+					{ label: "Australia", y: 24, url: "australia.png" },
+					{ label: "South Korea", y: 36, url: "skorea.png" },
+					{ label: "Germany", y: 41, url: "germany.png" },
+					{ label: "Japan", y: 46, url: "japan.png" },
+					{ label: "United Kingdom", y: 48, url: "uk.png" },
+					{ label: "India", y: 55, url: "india.png" },
+					{ label: "Russia", y: 69, url: "russia.png" },
+					{ label: "Vietnam", y: 215, url: "vietnam.png" },
+					{ label: "United States", y: 611, url: "us.png" }
+				]
+			}]
 		});
 		chart.render();}, 200);
 }

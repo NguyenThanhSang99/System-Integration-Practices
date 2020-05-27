@@ -1,14 +1,22 @@
-
+.content{
+	margin-left: 240px;
+	width: 80vw;
+}
+h2 {
+	text-align:center; 
+	color:blue;
+}
 #chartContainer, #chartContainer2{
 	background: #ccc;
 }
-
 .chart{
 	margin-right: 10px;
-	width: 450px;
+	width: 49%;
 	height: 300px;
 	float: left;
 }
-.personal-list table{
-	width: 600px;
+
+.div-table table{
+	margin-left: 50px;
+	width: 700px;
 }
