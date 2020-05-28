@@ -7,14 +7,14 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Add employee to Payroll System</title>
+<title>Update employee in Payroll System</title>
 </head>
 <body>
 	<t:home>
 		<div class="content">
-			<h2 style="text-align:center; color:blue;">Create New Employee For Payroll</h2>
+			<h2 style="text-align:center; color:blue;">Update Employee For Payroll</h2>
 	
-			<form:form method="POST" action="${pageContext.request.contextPath}/addPayrollEmployee" modelAttribute="employee">
+			<form:form method="POST" action="${pageContext.request.contextPath}/updatePayrollEmployeeAction" modelAttribute="employee">
 		         <table border="0">
 		            <tr>
 		               <td>Employee Number</td>
@@ -36,7 +36,7 @@
 		               <td>SSN</td>
 		               <td><form:input type="number" path="ssn"/></td>
 		            </tr>
-		             <tr>
+		            <tr>
 		               <td>PayRate</td>
 		               <td><form:input type="text" path="payRate"/></td>
 		            </tr>
@@ -49,7 +49,6 @@
 								</c:forEach>
 						  	</form:select>
 					  	</td>
-		               
 		            </tr>
 		            <tr>
 		               <td>Vacation Days</td>
@@ -65,7 +64,7 @@
 		            </tr>
 		            <tr>
 		               <td colspan="2">                   
-		                   <input type="submit" value="Create" />
+		                   <input type="submit" value="Update" />
 		               </td>
 		            </tr>
 		         </table>

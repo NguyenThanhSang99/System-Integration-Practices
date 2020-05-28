@@ -9,6 +9,7 @@ function getData(){
         	
         	var row = tbl.rows.length - 1;
         	var dict = [];
+        	var dict_check = [];
         	for(var j = 0; j<=row; j++){
         		if(tbl.rows[j].cells[3].innerHTML){
         			dict.push(tbl.rows[j].cells[3].innerHTML);
@@ -29,10 +30,10 @@ function getData(){
                     }
                 	if(r>=0){
                 		var emp_Payroll = {
-                    			id: tbl.rows[r].cells[0].innerHTML,
-                        		firstName: tbl.rows[r].cells[1].innerHTML,
-                        		lastName: tbl.rows[r].cells[2].innerHTML,
-                        		ssn: tbl.rows[r].cells[3].innerHTML
+                			employeeNumber: tbl.rows[r].cells[0].innerHTML,
+                    		firstName: tbl.rows[r].cells[1].innerHTML,
+                    		lastName: tbl.rows[r].cells[2].innerHTML,
+                    		ssn: tbl.rows[r].cells[3].innerHTML
                         }
                 		var nameInPayroll = tbl.rows[r].cells[1].innerHTML + " " + tbl.rows[r].cells[2].innerHTML;
                 		if(nameInHR !== nameInPayroll){
@@ -45,7 +46,7 @@ function getData(){
                 			
                 			addNotification(content, content1, content2, emp_HR, emp_Payroll);
                 		}
-                		dict.splice(r,1);
+                		dict_check.push(dict[r]);
                 	} else {
             			var content = "Employee " + nameInHR + " in HR but it don't exist in Payroll.";
             			
@@ -58,23 +59,25 @@ function getData(){
                 }
             }
             for(var j = 0; j < dict.length; j++){
-            	var emp_Payroll = {
-            			id: tbl.rows[j].cells[0].innerHTML,
-                		firstName: tbl.rows[j].cells[1].innerHTML,
-                		lastName: tbl.rows[j].cells[2].innerHTML,
-                		ssn: tbl.rows[j].cells[3].innerHTML
-                }
-            	var nameInPayroll = tbl.rows[j].cells[1].innerHTML + " " + tbl.rows[j].cells[2].innerHTML;
-        		
-            	var id_Payroll = tbl.rows[j].cells[0].innerHTML;
-            	
-            	var content = "Employee " + nameInPayroll + " in Payroll but it don't exist in HR.";
-    			
-    			var content1 = "Add to HR";
-    			
-    			var content2 = "Delete in Payroll";
-    			
-    			addNotification(content, content1, content2, null, emp_Payroll);        
+            	if(dict_check.indexOf(dict[j])<0){
+            		var emp_Payroll = {
+                			employeeNumber: tbl.rows[j].cells[0].innerHTML,
+                    		firstName: tbl.rows[j].cells[1].innerHTML,
+                    		lastName: tbl.rows[j].cells[2].innerHTML,
+                    		ssn: tbl.rows[j].cells[3].innerHTML
+                    }
+                	var nameInPayroll = tbl.rows[j].cells[1].innerHTML + " " + tbl.rows[j].cells[2].innerHTML;
+            		
+                	var id_Payroll = tbl.rows[j].cells[0].innerHTML;
+                	
+                	var content = "Employee " + nameInPayroll + " in Payroll but it don't exist in HR.";
+        			
+        			var content1 = "Add to HR";
+        			
+        			var content2 = "Delete in Payroll";
+        			
+        			addNotification(content, content1, content2, null, emp_Payroll);
+            	}    
             }
         },
         error: function(jqXHR, textStatus, errorThrown){
@@ -98,20 +101,40 @@ function addNotification(content, button_content_1, button_content_2, emp_HR, em
 		btn1.classList.add(sys1[0]);
 		btn1.innerHTML = button_content_1;
 		btn1.addEventListener('click', function() {
+			var department1 = sys1[2];
 			if(sys1[0] === "Add"){
-				if(emp_HR!==null){
-					window.location = "/AISSystem/createEmployeeToPayroll?firstName=" + emp_HR.firstName + "&lastName=" 
-					+ emp_HR.lastName + "&ssn=" + emp_HR.ssn + "";
+				if(emp_HR!==null && department1 === "Payroll"){
+					var emp_post = {
+							firstName: emp_HR.firstName,
+							lastName: emp_HR.lastName,
+							ssn: emp_HR.ssn
+					}
+					postAndRedirect("/AISSystem/createPayrollEmployee", emp_post);
 				}
-				if(emp_Payroll!==null){
+				if(emp_Payroll!==null && sdepartment1 === "HR"){
 					alert("Add to HR");
 				}
 			} else if(sys1[0] === "Update") {
-				alert(button_content_1 + (sys1.pop()==="HR"?emp_HR:emp_Payroll));
+				if(emp_Payroll!==null && department1 === "Payroll"){
+					var emp_post = {
+							employeeNumber: emp_Payroll.employeeNumber
+					}
+					postAndRedirect("/AISSystem/updatePayrollEmployee", emp_post);
+				}
+				if(emp_HR!==null && department1 === "HR"){
+					alert("Update to HR");
+				}
 			} else {
-				alert(button_content_1 + (sys1.pop()==="HR"?emp_HR:emp_Payroll));
+				if(emp_Payroll!==null && department1 === "Payroll"){
+					var emp_post = {
+							employeeNumber: emp_Payroll.employeeNumber
+					}
+					postAndRedirect("/AISSystem/deletePayrollEmployee", emp_post);
+				}
+				if(emp_HR!==null && department1 === "HR"){
+					alert("Delete in HR");
+				}
 			}
-		    
 		}, false);
 		div.appendChild(btn1);
 	}
@@ -121,22 +144,60 @@ function addNotification(content, button_content_1, button_content_2, emp_HR, em
 		btn2.classList.add(sys2[0]);
 		btn2.innerHTML = button_content_2;
 		btn2.addEventListener('click', function() {
+			var department2 = sys2[2];
 			if(sys2[0] === "Add"){
-				if(emp_HR!==null){
-					window.location = "/AISSystem/createEmployeeToPayroll?firstName=" + emp_HR.firstName + "&lastName=" 
-					+ emp_HR.lastName + "&ssn=" + emp_HR.ssn + "";
+				if(emp_HR!==null && department2 === "Payroll"){
+					var emp_post = {
+							firstName: emp_HR.firstName,
+							lastName: emp_HR.lastName,
+							ssn: emp_HR.ssn
+					}
+					postAndRedirect("/AISSystem/createPayrollEmployee", emp_post);
 				}
-				if(emp_Payroll!==null){
+				if(emp_Payroll!==null && department2 === "HR"){
 					alert("Add to HR");
 				}
 			} else if(sys2[0] === "Update") {
-				alert(button_content_1 + (sys2.pop()==="HR"?emp_HR:emp_Payroll));
+				if(emp_Payroll!==null && department2 === "Payroll"){
+					var emp_post = {
+							employeeNumber: emp_Payroll.employeeNumber
+					}
+					postAndRedirect("/AISSystem/updatePayrollEmployee", emp_post);
+				}
+				if(emp_HR!==null && department2 === "HR"){
+					alert("Update to HR");
+				}
 			} else {
-				alert(button_content_1 + (sys2.pop()==="HR"?emp_HR:emp_Payroll));
+				if(emp_Payroll!==null && department2 === "Payroll"){
+					var emp_post = {
+							employeeNumber: emp_Payroll.employeeNumber
+					}
+					postAndRedirect("/AISSystem/deletePayrollEmployee", emp_post);
+				}
+				if(emp_HR!==null && department2 === "HR"){
+					alert("Delete in HR");
+				}
 			}
 		}, false);
 		div.appendChild(btn2);
 	}
+}
+
+function postAndRedirect(url, postData){
+    var postFormStr = "<form method='POST' action='" + url + "'>\n";
+
+    for (var key in postData){
+        if (postData.hasOwnProperty(key)){
+            postFormStr += "<input type='hidden' name='" + key + "' value='" + postData[key] + "'></input>";
+        }
+    }
+
+    postFormStr += "</form>";
+
+    var formElement = $(postFormStr);
+
+    $('body').append(formElement);
+    $(formElement).submit();
 }
 
 window.onload = function() {

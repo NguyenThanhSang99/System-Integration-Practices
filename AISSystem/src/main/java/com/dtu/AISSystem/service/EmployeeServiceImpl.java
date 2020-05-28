@@ -18,8 +18,23 @@ public class EmployeeServiceImpl implements EmployeeService {
 		return employeeDAO.listEmployee();
 	}
 
-	public void createEmployee(Employee employee) {
-		employeeDAO.createEmployee(employee);
+	public boolean createEmployee(Employee employee) {
+		return employeeDAO.createEmployee(employee);
+		
+	}
+
+	public boolean updateEmployee(Employee employee) {
+		return employeeDAO.updateEmployee(employee);
+		
+	}
+
+	public boolean deleteEmployee(int employee_number) {
+		return employeeDAO.deleteEmployee(employee_number);
+		
+	}
+
+	public Employee getEmployeeByNumber(int employeeNumber) {
+		return employeeDAO.getEmployeeByNumber(employeeNumber);
 	}
 
 }

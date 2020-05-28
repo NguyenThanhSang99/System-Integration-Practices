@@ -7,5 +7,11 @@ import com.dtu.AISSystem.model.Employee;
 public interface EmployeeService {
 	public List<Employee> getEmployee();
 	
-	public void createEmployee(Employee employee);
+	public Employee getEmployeeByNumber(int employeeNumber);
+	
+	public boolean createEmployee(Employee employee);
+	
+	public boolean updateEmployee(Employee employee);
+	
+	public boolean deleteEmployee(int employee_number);
 }

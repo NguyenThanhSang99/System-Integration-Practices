@@ -15,11 +15,16 @@
 	<t:home>
 		<div id="content" class="content">
 			<h1>Notification List</h1>
+			<c:if test="${not empty param.result}">
+				<div class="${param.result}">
+					${param.action } ${param.result }!!!
+				</div>
+			</c:if>
 			<table id="table" class="hidden">
 				<tbody>
 					<c:forEach items="${employeeList}" var="emp" varStatus="loop">
 					<tr>
-						<td>${emp.idEmployee}</td>
+						<td>${emp.employeeNumber}</td>
 						<td>${emp.firstName}</td>
 						<td>${emp.lastName}</td>
 						<td>${emp.ssn}</td>
