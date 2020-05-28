@@ -26,6 +26,13 @@ public class Employee{
 	     this.firstName = firstName;
 	     this.ssn = ssn;
 	 }
+	 
+	 public Employee(String lastName, String firstName, long ssn) {
+	     this.lastName = lastName;
+	     this.firstName = firstName;
+	     this.ssn = ssn;
+	 }
+	 
 	 public Employee(int employeeNumber, int idEmployee, String lastName, String firstName, long ssn, String payRate, Integer payRatesId, Integer vacationDays, Byte paidToDate, Byte paidLastYear) {
 	    this.employeeNumber = employeeNumber;
 	    this.idEmployee = idEmployee;

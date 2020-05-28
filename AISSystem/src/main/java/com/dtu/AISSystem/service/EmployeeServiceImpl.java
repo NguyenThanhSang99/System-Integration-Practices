@@ -18,4 +18,8 @@ public class EmployeeServiceImpl implements EmployeeService {
 		return employeeDAO.listEmployee();
 	}
 
+	public void createEmployee(Employee employee) {
+		employeeDAO.createEmployee(employee);
+	}
+
 }

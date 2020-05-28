@@ -1,0 +1,50 @@
+.content{
+	margin-left: 240px;
+	width: 80vw;
+}
+.notification-list {
+	border-top: 3px solid green;
+  	margin-bottom: 10px;
+}
+
+h1 {
+	color: #0000FF;
+	margin-left: 5vw;
+	border-bottom: 3px solid green;
+}
+.hidden {
+	display: none;
+}
+.notification-content {
+	background-color: #000033;
+	color: #fff;
+	width: 70%;
+    float: left;
+    margin-top: 15px;
+    border-top: 1px solid #ccc;
+    min-height: 115px;
+    line-height: 50px;
+    padding-left: 15px;
+    margin-left: 5vw;
+}
+
+.btn {
+	margin-top: 15px;
+    width: 15%;
+    height: 50px;
+}
+
+.Add {
+	background-color: #00FF00;
+	color: #000033;
+}
+
+.Update {
+	background-color: #2bf0f0;
+	color: #800080;
+}
+
+.Delete {
+	background-color: #CC0000;
+	color: #fff;
+}

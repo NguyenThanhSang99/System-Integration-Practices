@@ -92,18 +92,7 @@
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 			<version>5.1.34</version>
-		</dependency>
-		<!-- api jackson -->
-		<dependency>
-		    <groupId>com.fasterxml.jackson.core</groupId>
-		    <artifactId>jackson-core</artifactId>
-		    <version>2.4.3</version>
-		</dependency>
-		<dependency>
-		    <groupId>com.fasterxml.jackson.core</groupId>
-		    <artifactId>jackson-databind</artifactId>
-		    <version>2.4.3</version>
-		</dependency>
+		</dependency>		
 	</dependencies>
 	<build>
 		<finalName>AISSystem</finalName>

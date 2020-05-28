@@ -31,4 +31,15 @@ public class EmployeeDAOImpl extends JdbcDaoSupport implements EmployeeDAO{
         return list;
 	}
 
+	public void createEmployee(Employee employee) {
+		String sql = "INSERT INTO `employee` VALUES ("
+				+ employee.getEmployeeNumber() + "," + employee.getIdEmployee() 
+				+ ",'" + employee.getLastName() + "','" + employee.getFirstName() 
+				+ "'," + employee.getSsn() + ",'" + employee.getPayRate() 
+				+ "'," + employee.getPayRatesId() + "," + employee.getVacationDays() 
+				+ "," + employee.getPaidToDate() + "," + employee.getPaidLastYear() + ");";
+ 
+        this.getJdbcTemplate().execute(sql);		
+	}
+
 }

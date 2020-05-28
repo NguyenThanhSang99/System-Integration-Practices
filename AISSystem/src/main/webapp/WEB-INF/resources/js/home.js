@@ -25,7 +25,7 @@ function getData(){
                 if(len.value > 0){
                     for(var i=0;i<len.value;i++){
                     	var c = dict.indexOf(data[i].Social_Security_Number);
-                    	if(c>0){
+                    	if(c>=0){
                     		var r = c + 1;
                 			tbl.rows[r].cells[0].innerHTML = (data[i].First_Name==null?"":data[i].First_Name);
                 			tbl.rows[r].cells[1].innerHTML = (data[i].Last_Name==null?"":data[i].Last_Name);

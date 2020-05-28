@@ -17,7 +17,6 @@ com\dtu\AISSystem\dao\EmployeeDAO.class
 com\dtu\AISSystem\dao\PayRatesDAOImpl.class
 com\dtu\AISSystem\controller\HomeController.class
 com\dtu\AISSystem\config\WebMvcConfig.class
-com\dtu\AISSystem\controller\ApiController.class
 com\dtu\AISSystem\config\WebSecurityConfig.class
 com\dtu\AISSystem\model\PayRates.class
 com\dtu\AISSystem\controller\AuthenticationController.class

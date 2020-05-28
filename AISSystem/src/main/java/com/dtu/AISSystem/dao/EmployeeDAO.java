@@ -7,4 +7,6 @@ import com.dtu.AISSystem.model.Employee;
 public interface EmployeeDAO {
 	
 	    public List<Employee> listEmployee();
+	    
+	    public void createEmployee(Employee employee);
 }

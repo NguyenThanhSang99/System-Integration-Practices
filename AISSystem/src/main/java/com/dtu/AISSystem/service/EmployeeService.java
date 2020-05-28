@@ -6,4 +6,6 @@ import com.dtu.AISSystem.model.Employee;
 
 public interface EmployeeService {
 	public List<Employee> getEmployee();
+	
+	public void createEmployee(Employee employee);
 }
