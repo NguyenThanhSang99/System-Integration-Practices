@@ -8,6 +8,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Add employee to Payroll System</title>
+<link rel="stylesheet" href="css/addEmployee.css">
 </head>
 <body>
 	<t:home>
@@ -17,12 +18,12 @@
 			<form:form method="POST" action="${pageContext.request.contextPath}/addPayrollEmployee" modelAttribute="employee">
 		         <table border="0">
 		            <tr>
-		               <td>Employee Number</td>
-		               <td><form:input type="number" path="employeeNumber"/></td>
+		               <td class="hidden"></td>
+		               <td><form:input type="number" path="employeeNumber" class="hidden"/></td>
 		            </tr>
 		            <tr>
-		               <td>Employee ID</td>
-		               <td><form:input type="number" path="idEmployee"/></td>
+		               <td class="hidden"></td>
+		               <td><form:input type="number" path="idEmployee" class="hidden"/></td>
 		            </tr>
 		            <tr>
 		               <td>Last Name</td>

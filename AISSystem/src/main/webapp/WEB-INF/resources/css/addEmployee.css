@@ -1,0 +1,16 @@
+.hidden {
+	display: none;
+}
+
+.form1 {
+	width: 40%;
+	margin-left: 100px;
+}
+
+.add-btn {
+	background-color: green;
+	height: 40px;
+	color: white;
+	margin-left: 250px;
+}
+

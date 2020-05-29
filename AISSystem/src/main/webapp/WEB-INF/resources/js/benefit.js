@@ -1,7 +1,7 @@
 function getData(){
 	$.ajax({
         type: 'POST',
-        url: 'http://localhost:19335/api/BenefitPlans',
+        url: 'http://localhost:19335/api/BenefitPlans/Get',
         data: $('#benefit_plan_list').serialize(),
         dataType:"json", //to parse string into JSON object,
         success: function(data){ 

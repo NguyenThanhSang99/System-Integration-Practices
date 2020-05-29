@@ -22,18 +22,30 @@ public class EmployeeController {
 	@Autowired
     private PayRatesService payService;
 	
+	@RequestMapping(value = "/createNewEmployee", method = RequestMethod.GET)
+	public String createEmployee(Model model) {	
+		List<PayRates> payratesList = payService.getPayRates();
+		model.addAttribute("payRatesList", payratesList);
+		model.addAttribute("employee",new Employee());
+		return "addEmployee";
+	}
+	
 	@RequestMapping(value = "/createPayrollEmployee", method = RequestMethod.POST)
-	public String createEmployeePayroll(Model model, String firstName, String lastName, int ssn) {
+	public String createEmployeePayroll(Model model, int id, String firstName, String lastName, int ssn) {
 		List<PayRates> payratesList = payService.getPayRates();
 		model.addAttribute("payRatesList", payratesList);
 		
-		model.addAttribute("employee",new Employee(lastName, firstName, ssn));
+		model.addAttribute("employee",new Employee(id, lastName, firstName, ssn));
 		
 		return "createEmployee";
 	}
 	
 	@RequestMapping(value = { "/addPayrollEmployee" }, method = RequestMethod.POST)
 	public String addEmployeePayroll(Model model, @ModelAttribute("employee") Employee employee) {
+		List<Employee> employeeList = employeeService.getEmployee();
+		int employeeNumber = 1000+employeeList.size()+1;
+		employee.setEmployeeNumber(employeeNumber);
+		
 		model.addAttribute("action", "Add");
 		if(employeeService.createEmployee(employee)) {
 			model.addAttribute("result", "success");
@@ -74,8 +86,8 @@ public class EmployeeController {
 	}
 	
 	@RequestMapping(value = "/createHRPersonal", method = RequestMethod.POST)
-	public String createEmployeeHR(Model model, String firstName, String lastName, int ssn) {
-		model.addAttribute("employee",new Employee(firstName, lastName, ssn));
+	public String createEmployeeHR(Model model, int id, String firstName, String lastName, int ssn) {
+		model.addAttribute("employee",new Employee(id, lastName, firstName, ssn));
 		
 		return "createPersonal";
 	}

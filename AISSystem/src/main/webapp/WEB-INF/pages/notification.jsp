@@ -28,6 +28,7 @@
 						<td>${emp.firstName}</td>
 						<td>${emp.lastName}</td>
 						<td>${emp.ssn}</td>
+						<td>${emp.idEmployee}</td>
 					</tr>
 				</c:forEach>
 				</tbody>

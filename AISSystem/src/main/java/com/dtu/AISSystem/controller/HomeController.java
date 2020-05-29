@@ -44,6 +44,7 @@ public class HomeController {
     
     @RequestMapping("/notification")
     public String displayNotification(Model model) {
+    	
     	List<Employee> employeeList = employeeService.getEmployee();
 		model.addAttribute("employeeList", employeeList);
 		return "notification";

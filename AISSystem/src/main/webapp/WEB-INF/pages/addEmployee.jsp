@@ -2,31 +2,33 @@
     pageEncoding="ISO-8859-1"%>
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>  
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Add employee to HR System</title>
+<title>Add New Employee</title>
+<link rel="stylesheet" href="css/addEmployee.css">
 <script src="js/jquery.min.js"></script>
-<script type="text/javascript" src="js/addHREmployee.js"></script>
+<script type="text/javascript" src="js/addEmployee.js"></script>
 </head>
 <body>
 	<t:home>
 		<div class="content">
 			<h2 style="text-align:center; color:blue;">Create New Employee For HR</h2>
-			<form id="emp">
+			<form id="emp" class="form1">
 		         <table border="0">
 		         	<tr>
-		         		<td style="display: none;">Employee ID</td>
-		               <td><input id="Employee_ID" style="display: none;" name="Employee_ID" type="number" value="${employee.idEmployee}"/></td>
+		               <td class="hidden">Employee ID</td>
+		               <td><input id="Employee_ID" name="Employee_ID" type="number" class="hidden"/></td>
 		            </tr>
 		            <tr>
 		               <td>First Name</td>
-		               <td><input id="First_Name" name="First_Name" type="text" value="${employee.firstName}"/></td>
+		               <td><input id="First_Name" name="First_Name" type="text"/></td>
 		            </tr>
 		            <tr>
 		               <td>Last Name</td>
-		               <td><input id="Last_Name" name="Last_Name" type="text" value="${employee.lastName}"/></td>
+		               <td><input id="Last_Name" name="Last_Name" type="text"/></td>
 		            </tr>
 		            <tr>
 		               <td>Middle_Initial</td>
@@ -62,7 +64,7 @@
 		            </tr>
 		            <tr>
 		               <td>Social_Security_Number</td>
-		               <td><input id="Social_Security_Number" name="Social_Security_Number" type="number" value="${employee.ssn}"/></td>
+		               <td><input id="Social_Security_Number" name="Social_Security_Number" type="number"/></td>
 		            </tr>
 		             <tr>
 		               <td>Drivers_License</td>
@@ -93,7 +95,58 @@
 		            </tr>
 		         </table>
 		       </form>
-		       <button onclick="SubForm()">Create</button>
+		       <form:form id="payrollForm" class="form1" method="POST" action="${pageContext.request.contextPath}/addPayrollEmployee" modelAttribute="employee">
+		         <table border="0">
+		         	<tr>
+		               <td class="hidden"></td>
+		               <td><form:input type="number" path="employeeNumber" class="hidden"/></td>
+		            </tr>
+		            <tr>
+		               <td class="hidden">Employee ID</td>
+		               <td><form:input id="emp_id" type="number" path="idEmployee" class="hidden"/></td>
+		            </tr>
+		            <tr>
+		               <td class="hidden">Last Name</td>
+		               <td><form:input id="lastname" type="text" path="lastName" class="hidden"/></td>
+		            </tr>
+		            <tr>
+		               <td class="hidden">First Name</td>
+		               <td><form:input id="firstname" type="text" path="firstName" class="hidden"/></td>
+		            </tr>
+		            <tr>
+		               <td class="hidden">SSN</td>
+		               <td><form:input id="ssn" type="number" path="ssn" class="hidden"/></td>
+		            </tr>
+		             <tr>
+		               <td>PayRate</td>
+		               <td><form:input type="text" path="payRate"/></td>
+		            </tr>
+		            <tr>
+		               <td>PayRates ID</td>
+		               <td>
+			               <form:select name="cars" path="payRatesId">
+				               	<c:forEach items="${payRatesList}" var="payrates" varStatus="loop">
+				               		<option value="${payrates.idPayRates }">${payrates.payRateName}</option>
+								</c:forEach>
+						  	</form:select>
+					  	</td>
+		               
+		            </tr>
+		            <tr>
+		               <td>Vacation Days</td>
+		               <td><form:input type="number" path="vacationDays"/></td>
+		            </tr>
+		            <tr>
+		               <td>Paid to date</td>
+		               <td><form:input type="number" path="paidToDate"/></td>
+		            </tr>
+		            <tr>
+		               <td>Paid last year</td>
+		               <td><form:input type="number" path="paidLastYear"/></td>
+		            </tr>
+		         </table>
+		      </form:form>
+		       <button class="add-btn" onclick="SubForm()">Create</button>
 			</div>
 	</t:home>
 </body>

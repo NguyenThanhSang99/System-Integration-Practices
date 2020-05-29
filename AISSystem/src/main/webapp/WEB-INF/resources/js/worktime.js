@@ -1,7 +1,7 @@
 function getData(){
     $.ajax({
         type: 'POST',
-        url: 'http://localhost:19335/api/JobHistory',
+        url: 'http://localhost:19335/api/JobHistory/Get',
         data: $('#job_history_list').serialize(),
         dataType:"json", //to parse string into JSON object,
         success: function(data){ 

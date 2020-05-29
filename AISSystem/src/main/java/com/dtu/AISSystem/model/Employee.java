@@ -27,7 +27,8 @@ public class Employee{
 	     this.ssn = ssn;
 	 }
 	 
-	 public Employee(String lastName, String firstName, long ssn) {
+	 public Employee(int id, String lastName, String firstName, long ssn) {
+		 this.idEmployee = id;
 	     this.lastName = lastName;
 	     this.firstName = firstName;
 	     this.ssn = ssn;

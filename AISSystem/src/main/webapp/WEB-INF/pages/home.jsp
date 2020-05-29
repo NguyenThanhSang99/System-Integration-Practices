@@ -22,6 +22,7 @@
 				<table id="table" class="table hidden" border="1" cellpadding="8" cellspacing="1">
 					<caption class="caption blue">
             			<span><strong>Personal List</strong></span>
+            			<a href="${pageContext.request.contextPath}/createNewEmployee" >Create employee</a>
         			</caption>
 					<thead class="thead-dark">
 						<tr>

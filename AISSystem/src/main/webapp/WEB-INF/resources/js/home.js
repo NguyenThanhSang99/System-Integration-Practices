@@ -6,7 +6,7 @@ var value = 0;
 function getData(){
 	$.ajax({
         type: 'POST',
-        url: 'http://localhost:19335/api/Personals',
+        url: 'http://localhost:19335/api/Personals/Get',
         data: $('#personals').serialize(),
         dataType:"json", //to parse string into JSON object,
         success: function(data){ 

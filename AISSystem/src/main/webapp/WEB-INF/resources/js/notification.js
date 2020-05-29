@@ -1,7 +1,7 @@
 function getData(){
 	$.ajax({
         type: 'POST',
-        url: 'http://localhost:19335/api/Personals',
+        url: 'http://localhost:19335/api/Personals/Get',
         data: $('#personals').serialize(),
         dataType:"json", //to parse string into JSON object,
         success: function(data){
@@ -33,7 +33,8 @@ function getData(){
                 			employeeNumber: tbl.rows[r].cells[0].innerHTML,
                     		firstName: tbl.rows[r].cells[1].innerHTML,
                     		lastName: tbl.rows[r].cells[2].innerHTML,
-                    		ssn: tbl.rows[r].cells[3].innerHTML
+                    		ssn: tbl.rows[r].cells[3].innerHTML,
+                    		id: tbl.rows[r].cells[4].innerHTML
                         }
                 		var nameInPayroll = tbl.rows[r].cells[1].innerHTML + " " + tbl.rows[r].cells[2].innerHTML;
                 		if(nameInHR !== nameInPayroll){
@@ -64,7 +65,8 @@ function getData(){
                 			employeeNumber: tbl.rows[j].cells[0].innerHTML,
                     		firstName: tbl.rows[j].cells[1].innerHTML,
                     		lastName: tbl.rows[j].cells[2].innerHTML,
-                    		ssn: tbl.rows[j].cells[3].innerHTML
+                    		ssn: tbl.rows[j].cells[3].innerHTML,
+                    		id: tbl.rows[j].cells[4].innerHTML
                     }
                 	var nameInPayroll = tbl.rows[j].cells[1].innerHTML + " " + tbl.rows[j].cells[2].innerHTML;
             		
@@ -105,14 +107,21 @@ function addNotification(content, button_content_1, button_content_2, emp_HR, em
 			if(sys1[0] === "Add"){
 				if(emp_HR!==null && department1 === "Payroll"){
 					var emp_post = {
+							id: emp_HR.id,
 							firstName: emp_HR.firstName,
 							lastName: emp_HR.lastName,
 							ssn: emp_HR.ssn
 					}
 					postAndRedirect("/AISSystem/createPayrollEmployee", emp_post);
 				}
-				if(emp_Payroll!==null && sdepartment1 === "HR"){
-					alert("Add to HR");
+				if(emp_Payroll!==null && department1 === "HR"){
+					var emp_post = {
+							id: emp_Payroll.id,
+							firstName: emp_Payroll.firstName,
+							lastName: emp_Payroll.lastName,
+							ssn: emp_Payroll.ssn
+					}
+					postAndRedirect("/AISSystem/createHRPersonal", emp_post);
 				}
 			} else if(sys1[0] === "Update") {
 				if(emp_Payroll!==null && department1 === "Payroll"){
@@ -132,7 +141,7 @@ function addNotification(content, button_content_1, button_content_2, emp_HR, em
 					postAndRedirect("/AISSystem/deletePayrollEmployee", emp_post);
 				}
 				if(emp_HR!==null && department1 === "HR"){
-					alert("Delete in HR");
+					deleteEmployeeHR(emp_HR.id);
 				}
 			}
 		}, false);
@@ -147,15 +156,15 @@ function addNotification(content, button_content_1, button_content_2, emp_HR, em
 			var department2 = sys2[2];
 			if(sys2[0] === "Add"){
 				if(emp_HR!==null && department2 === "Payroll"){
-					var emp_post = {
-							firstName: emp_HR.firstName,
-							lastName: emp_HR.lastName,
-							ssn: emp_HR.ssn
-					}
-					postAndRedirect("/AISSystem/createPayrollEmployee", emp_post);
+					addEmployee("/AISSystem/createPayrollEmployee", emp_HR);
 				}
 				if(emp_Payroll!==null && department2 === "HR"){
-					alert("Add to HR");
+					var emp_post = {
+							firstName: emp_Payroll.firstName,
+							lastName: emp_Payroll.lastName,
+							ssn: emp_Payroll.ssn
+					}
+					postAndRedirect("/AISSystem/createHRPersonal", emp_post);
 				}
 			} else if(sys2[0] === "Update") {
 				if(emp_Payroll!==null && department2 === "Payroll"){
@@ -175,7 +184,7 @@ function addNotification(content, button_content_1, button_content_2, emp_HR, em
 					postAndRedirect("/AISSystem/deletePayrollEmployee", emp_post);
 				}
 				if(emp_HR!==null && department2 === "HR"){
-					alert("Delete in HR");
+					deleteEmployeeHR(emp_HR.id);
 				}
 			}
 		}, false);
@@ -198,6 +207,28 @@ function postAndRedirect(url, postData){
 
     $('body').append(formElement);
     $(formElement).submit();
+}
+
+function addEmployee(url, emp){
+	var emp_post = {
+			id: emp.id,
+			firstName: emp.firstName,
+			lastName: emp.lastName,
+			ssn: emp.ssn
+	}
+	postAndRedirect(url, emp_post);
+}
+
+function deleteEmployeeHR(id){
+	var requestOptions = {
+			  method: 'POST',
+			  redirect: 'follow'
+			};
+			var url = "http://localhost:19335/api/Personals/Delete?id=" + id;
+			fetch(url, requestOptions)
+			  .then(response => response.text())
+			  .then(result => function(){window.location = '/AISSystem/notification?action=Delete&result=' + result;})
+			  .catch(error => console.log('error', error));
 }
 
 window.onload = function() {
