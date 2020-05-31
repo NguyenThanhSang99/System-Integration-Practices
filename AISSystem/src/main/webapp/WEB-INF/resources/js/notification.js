@@ -21,7 +21,7 @@ function getData(){
                 for(var i=0;i<len;i++){
                 	var r = dict.indexOf(data[i].Social_Security_Number);
                 	var id_HR = data[i].Employee_ID;
-                	var nameInHR = data[i].First_Name + " " + data[i].Last_Name;
+                	var nameInHR = (data[i].First_Name===null?"":data[i].First_Name) + " " + (data[i].Last_Name===null?"":data[i].Last_Name);
                 	var emp_HR = {
                 			id: id_HR,
                     		firstName: data[i].First_Name,

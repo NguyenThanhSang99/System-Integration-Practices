@@ -7,20 +7,20 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Add New Employee</title>
+<title>Update information of Employee</title>
 <link rel="stylesheet" href="css/addEmployee.css">
 <script src="js/jquery.min.js"></script>
-<script type="text/javascript" src="js/addEmployee.js"></script>
+<script type="text/javascript" src="js/updateEmployee.js"></script>
 </head>
 <body>
 	<t:home>
 		<div class="content">
-			<h2 style="text-align:center; color:blue;">Create New Employee</h2>
+			<h2 style="text-align:center; color:blue;">Update Employee</h2>
 			<form id="emp" class="form1">
 		         <table border="0">
 		         	<tr>
 		               <td class="hidden">Employee ID</td>
-		               <td><input id="Employee_ID" name="Employee_ID" type="number" class="hidden"/></td>
+		               <td><input id="Employee_ID" name="Employee_ID" type="number" class="hidden" value="${param.employeeId }"/></td>
 		            </tr>
 		            <tr>
 		               <td>First Name</td>
@@ -95,7 +95,7 @@
 		            </tr>
 		         </table>
 		       </form>
-		       <form:form id="payrollForm" class="form1" method="POST" action="${pageContext.request.contextPath}/addPayrollEmployee" modelAttribute="employee">
+		       <form:form id="payrollForm" class="form1" method="POST" action="${pageContext.request.contextPath}/updatePayrollEmployeeAction" modelAttribute="employee">
 		         <table border="0">
 		         	<tr>
 		               <td class="hidden"></td>
@@ -146,7 +146,7 @@
 		            </tr>
 		         </table>
 		      </form:form>
-		       <button class="add-btn" onclick="SubForm()">Create</button>
+		       <button class="add-btn" onclick="SubForm()">Update</button>
 			</div>
 	</t:home>
 </body>

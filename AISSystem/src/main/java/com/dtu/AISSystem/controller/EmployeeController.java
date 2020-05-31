@@ -46,24 +46,23 @@ public class EmployeeController {
 		int employeeNumber = 1000+employeeList.size()+1;
 		employee.setEmployeeNumber(employeeNumber);
 		
-		model.addAttribute("action", "Add");
-		if(employeeService.createEmployee(employee)) {
-			model.addAttribute("result", "success");
-		} else {
-			model.addAttribute("result", "failed");
-		}
+		addAttributeResult(model, "Add employee", employeeService.createEmployee(employee));
 		return "redirect:notification";
 	}
 	
 	@RequestMapping(value = { "/deletePayrollEmployee" }, method = RequestMethod.POST)
-	public String daleteEmployeePayroll(Model model, int employeeNumber) {
-		model.addAttribute("action", "Delete");
-		if(employeeService.deleteEmployee(employeeNumber)) {
-			model.addAttribute("result", "success");
-		} else {
-			model.addAttribute("result", "failed");
-		}
+	public String deleteEmployeePayroll(Model model, int employeeNumber) {
+		addAttributeResult(model, "Delete employee", employeeService.deleteEmployee(employeeNumber));
 		return "redirect:notification";
+	}
+	
+	@RequestMapping(value = "/updateEmployee", method = RequestMethod.POST)
+	public String updateEmployee(Model model, int employeeNumber, int employeeId) {	
+		List<PayRates> payratesList = payService.getPayRates();
+		model.addAttribute("payRatesList", payratesList);
+		model.addAttribute("Employee_ID", employeeId);
+		model.addAttribute("employee",employeeService.getEmployeeByNumber(employeeNumber));
+		return "updateEmployee";
 	}
 	
 	@RequestMapping(value = { "/updatePayrollEmployee" }, method = RequestMethod.POST)
@@ -76,12 +75,7 @@ public class EmployeeController {
 	
 	@RequestMapping(value = { "/updatePayrollEmployeeAction" }, method = RequestMethod.POST)
 	public String updateEmployeePayrollAction(Model model, @ModelAttribute("employee") Employee employee) {
-		model.addAttribute("action", "Update");
-		if(employeeService.updateEmployee(employee)) {
-			model.addAttribute("result", "success");
-		} else {
-			model.addAttribute("result", "failed");
-		}
+		addAttributeResult(model, "Update employee", employeeService.updateEmployee(employee));
 		return "redirect:notification";
 	}
 	
@@ -90,5 +84,15 @@ public class EmployeeController {
 		model.addAttribute("employee",new Employee(id, lastName, firstName, ssn));
 		
 		return "createPersonal";
+	}
+	
+	private void addAttributeResult(Model model, String action, boolean result) {
+		if(result) {
+			model.addAttribute("action", action);
+			model.addAttribute("result", "success");
+		} else {
+			model.addAttribute("action", action + " in Payroll");
+			model.addAttribute("result", "failed");
+		}
 	}
 }

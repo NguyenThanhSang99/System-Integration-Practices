@@ -17,7 +17,7 @@ function getData(){
         	var row = tbl.rows.length - 1;
         	var dict = [];
         	for(var j = 1; j<=row; j++){
-        		dict.push(tbl.rows[j].cells[6].innerHTML);
+        		dict.push(tbl.rows[j].cells[5].innerHTML);
         	}
             if(data){
                 len.value = data.length;
@@ -25,30 +25,34 @@ function getData(){
                 if(len.value > 0){
                     for(var i=0;i<len.value;i++){
                     	var c = dict.indexOf(data[i].Social_Security_Number);
+                    	var firstName = data[i].First_Name;
+                    	var lastName = data[i].Last_Name;
                     	if(c>=0){
                     		var r = c + 1;
-                			tbl.rows[r].cells[0].innerHTML = (data[i].First_Name==null?"":data[i].First_Name);
-                			tbl.rows[r].cells[1].innerHTML = (data[i].Last_Name==null?"":data[i].Last_Name);
+                			tbl.rows[r].cells[0].innerHTML = (firstName==null?"":firstName);
+                			tbl.rows[r].cells[1].innerHTML = (lastName==null?"":lastName);
                 			tbl.rows[r].cells[2].innerHTML = (data[i].Address1==null?"":data[i].Address1);
-                			tbl.rows[r].cells[3].innerHTML = (data[i].Address2==null?"":data[i].Address2);
-                			tbl.rows[r].cells[4].innerHTML = (data[i].City==null?"":data[i].City);
-                			tbl.rows[r].cells[5].innerHTML = (data[i].State==null?"":data[i].State);
-                			tbl.rows[r].cells[6].innerHTML = (data[i].Social_Security_Number==null?"":data[i].Social_Security_Number);
-                			tbl.rows[r].cells[7].innerHTML = (data[i].Email==null?"":data[i].Email);
-                			tbl.rows[r].cells[8].innerHTML = (data[i].Phone_Number==null?"":data[i].Phone_Number);
-                			tbl.rows[r].cells[9].innerHTML = (data[i].Gender==true?"Male":"Female");
+                			tbl.rows[r].cells[3].innerHTML = (data[i].City==null?"":data[i].City);
+                			tbl.rows[r].cells[4].innerHTML = (data[i].State==null?"":data[i].State);
+                			tbl.rows[r].cells[5].innerHTML = (data[i].Social_Security_Number==null?"":data[i].Social_Security_Number);
+                			tbl.rows[r].cells[6].innerHTML = (data[i].Email==null?"":data[i].Email);
+                			tbl.rows[r].cells[7].innerHTML = (data[i].Phone_Number==null?"":data[i].Phone_Number);
+                			tbl.rows[r].cells[8].innerHTML = (data[i].Gender==true?"Male":"Female");
                     		row--;
                     	} else {
-                    		txt += "<tr><td>"+(data[i].First_Name==null?"":data[i].First_Name)
-                            +"</td><td>"+(data[i].Last_Name==null?"":data[i].Last_Name)
+                    		var deleteEmp = ""
+                    		txt += "<tr><td>"+(firstName==null?"":firstName)
+                            +"</td><td>"+(lastName==null?"":lastName)
                             +"</td><td>"+(data[i].Address1==null?"":data[i].Address1)
-                            +"</td><td>"+(data[i].Address2==null?"":data[i].Address2)
                             +"</td><td>"+(data[i].City==null?"":data[i].City)
                             +"</td><td>"+(data[i].State==null?"":data[i].State)
                             +"</td><td>"+(data[i].Social_Security_Number==null?"":data[i].Social_Security_Number)
                             +"</td><td>"+(data[i].Email==null?"":data[i].Email)
                             +"</td><td>"+(data[i].Phone_Number==null?"":data[i].Phone_Number)
                             +"</td><td>"+(data[i].Gender==true?"Male":"Female")
+                            +"</td><td onclick='updateEmployee(0, " + data[i].Employee_ID + ")'><i class='fas fa-user-edit blue icon-emp'></i>"
+							+"</td><td onclick='deleteEmployee(0, " + data[i].Employee_ID + ", `" + firstName + "`, `"
+        							+ lastName + "`)'><i class='fas fa-user-minus red icon-emp'></i>"
                             +"</td></tr>";
                     	}
                         if(data[i].Gender==true){
@@ -143,4 +147,55 @@ window.onload = function() {
 			}]
 		});
 		chart.render();}, 200);
+}
+
+function postAndRedirect(url, postData){
+    var postFormStr = "<form method='POST' action='" + url + "'>\n";
+
+    for (var key in postData){
+        if (postData.hasOwnProperty(key)){
+            postFormStr += "<input type='hidden' name='" + key + "' value='" + postData[key] + "'></input>";
+        }
+    }
+
+    postFormStr += "</form>";
+
+    var formElement = $(postFormStr);
+
+    $('body').append(formElement);
+    $(formElement).submit();
+}
+
+function updateEmployee(empNumber, idEmployee){
+	var emp_post = {
+		employeeNumber: empNumber,
+		employeeId: idEmployee
+	}
+	postAndRedirect("/AISSystem/updateEmployee", emp_post);
+}
+
+function deleteEmployee(empNumber, idEmployee, firstName, lastName){
+	var name = firstName + " " + lastName;
+	var r = confirm("Do you want to delete employee '" + name + "'?");
+	if (r === false) {
+		return;
+	}
+	var emp_post = {
+		employeeNumber: empNumber
+	}
+	var requestOptions = {
+		 method: 'POST',
+		 redirect: 'follow'
+	};
+	var url = "http://localhost:19335/api/Personals/Delete?id=" + idEmployee;
+	fetch(url, requestOptions)
+	  .then(response => response.text())
+	  .then(result => function(){
+	}).catch(error => function(){
+		var conf = confirm("Error when delete in HR.\nDo you want to continue with Payroll?");
+		if (conf === false) {
+			return;
+		}
+	});
+	postAndRedirect("/AISSystem/deletePayrollEmployee", emp_post);
 }
