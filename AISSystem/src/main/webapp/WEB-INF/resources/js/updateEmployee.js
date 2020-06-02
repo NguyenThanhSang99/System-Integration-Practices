@@ -9,7 +9,15 @@ function SubForm(){
             url:'http://localhost:19335/api/Personals/Update',
             type:'post',
             data:$('#emp').serialize(),
-            success:function(){            	
+            success:function(){      
+            	
+            	var firstname = document.getElementById("First_Name").value;
+            	var lastname = document.getElementById("Last_Name").value;
+            	
+            	
+            	document.getElementById("firstname").value = firstname;
+            	document.getElementById("lastname").value = lastname;
+            	document.getElementById("ssn").value = ssn;
             	document.getElementById("payrollForm").submit();
             },
         	error: function() {

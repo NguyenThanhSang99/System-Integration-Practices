@@ -16,7 +16,8 @@
 	<t:home>
 		<div class="content">
 			<h2 style="text-align:center; color:blue;">Create New Employee</h2>
-			<form id="emp" class="form1">
+			<form id="emp" class="form">
+				<h3>Human Resources</h3>
 		         <table border="0">
 		         	<tr>
 		               <td class="hidden">Employee ID</td>
@@ -95,27 +96,28 @@
 		            </tr>
 		         </table>
 		       </form>
-		       <form:form id="payrollForm" class="form1" method="POST" action="${pageContext.request.contextPath}/addPayrollEmployee" modelAttribute="employee">
+		       <form:form id="payrollForm" class="form" method="POST" action="${pageContext.request.contextPath}/addPayrollEmployee" modelAttribute="employee">
+		         <h3>Payroll</h3>
 		         <table border="0">
-		         	<tr>
-		               <td class="hidden"></td>
-		               <td><form:input type="number" path="employeeNumber" class="hidden"/></td>
+		         	<tr class="hidden">
+		               <td></td>
+		               <td><form:input type="number" path="employeeNumber"/></td>
 		            </tr>
-		            <tr>
-		               <td class="hidden">Employee ID</td>
-		               <td><form:input id="emp_id" type="number" path="idEmployee" class="hidden"/></td>
+		            <tr class="hidden">
+		               <td>Employee ID</td>
+		               <td><form:input id="emp_id" type="number" path="idEmployee"/></td>
 		            </tr>
-		            <tr>
-		               <td class="hidden">Last Name</td>
-		               <td><form:input id="lastname" type="text" path="lastName" class="hidden"/></td>
+		            <tr class="hidden">
+		               <td>Last Name</td>
+		               <td><form:input id="lastname" type="text" path="lastName"/></td>
 		            </tr>
-		            <tr>
+		            <tr class="hidden">
 		               <td class="hidden">First Name</td>
-		               <td><form:input id="firstname" type="text" path="firstName" class="hidden"/></td>
+		               <td><form:input id="firstname" type="text" path="firstName"/></td>
 		            </tr>
-		            <tr>
-		               <td class="hidden">SSN</td>
-		               <td><form:input id="ssn" type="number" path="ssn" class="hidden"/></td>
+		            <tr class="hidden">
+		               <td>SSN</td>
+		               <td><form:input id="ssn" type="number" path="ssn"/></td>
 		            </tr>
 		             <tr>
 		               <td>PayRate</td>
@@ -146,7 +148,7 @@
 		            </tr>
 		         </table>
 		      </form:form>
-		       <button class="add-btn" onclick="SubForm()">Create</button>
+		       <button class="add-btn bg-green" onclick="SubForm()">Create</button>
 			</div>
 	</t:home>
 </body>

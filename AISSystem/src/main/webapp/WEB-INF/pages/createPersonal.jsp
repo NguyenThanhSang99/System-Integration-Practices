@@ -7,14 +7,16 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Add employee to HR System</title>
+<link rel="stylesheet" href="css/addEmployee.css">
 <script src="js/jquery.min.js"></script>
 <script type="text/javascript" src="js/addHREmployee.js"></script>
 </head>
 <body>
 	<t:home>
 		<div class="content">
-			<h2 style="text-align:center; color:blue;">Create New Employee For HR</h2>
+			<div class="form oneForm">
 			<form id="emp">
+				<h3 style="text-align:left; color:blue;">Create New Employee For HR</h3>
 		         <table border="0">
 		         	<tr>
 		         		<td style="display: none;">Employee ID</td>
@@ -92,8 +94,10 @@
 		               <td><input id="Ethnicity" name="Ethnicity" type="number"/></td>
 		            </tr>
 		         </table>
+		         
 		       </form>
-		       <button onclick="SubForm()">Create</button>
+		       <button class="create-btn bg-green" onclick="SubForm()">Create</button>
+		       </div>
 			</div>
 	</t:home>
 </body>

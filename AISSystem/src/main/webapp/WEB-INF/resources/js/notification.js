@@ -131,7 +131,7 @@ function addNotification(content, button_content_1, button_content_2, emp_HR, em
 					postAndRedirect("/AISSystem/updatePayrollEmployee", emp_post);
 				}
 				if(emp_HR!==null && department1 === "HR"){
-					alert("Update to HR");
+					alert("Please go to Employee tab to update!!!");
 				}
 			} else {
 				if(emp_Payroll!==null && department1 === "Payroll"){
@@ -174,7 +174,7 @@ function addNotification(content, button_content_1, button_content_2, emp_HR, em
 					postAndRedirect("/AISSystem/updatePayrollEmployee", emp_post);
 				}
 				if(emp_HR!==null && department2 === "HR"){
-					alert("Update to HR");
+					alert("Please go to Employee tab to update!!!");
 				}
 			} else {
 				if(emp_Payroll!==null && department2 === "Payroll"){

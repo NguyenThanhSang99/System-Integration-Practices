@@ -16,6 +16,7 @@ public class Employee{
   	private Byte paidLastYear;
 
 	 public Employee() {
+		 this.employeeNumber = 0;
 	 }
 	
 		

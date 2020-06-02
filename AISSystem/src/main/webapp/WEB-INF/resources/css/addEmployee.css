@@ -2,15 +2,63 @@
 	display: none;
 }
 
-.form1 {
-	width: 40%;
-	margin-left: 100px;
+.form {
+	width: 35%;
+	margin-left: 10px;
+	padding-left: 20px;
+	border: 1px solid #ccc;
+	float: left;
+	text-align: left;
 }
 
 .add-btn {
-	background-color: green;
 	height: 40px;
+	margin-top: 22%;
 	color: white;
-	margin-left: 250px;
+	width: 25%;
+	margin-left: 10px;
+	font-size: 20px;
 }
 
+.create-btn {
+	height: 40px;
+	margin-top: 10px;
+	color: white;
+	width: 30%;
+	margin-left: 30%;
+	font-size: 20px;
+	clear: left;
+}
+
+.add-btn:hover,.create-btn:hover  {
+	background-color: #fff;
+	color: green;
+}
+
+input,select{
+	padding-left: 10px;
+	height: 20px;
+	margin-left: 10px;
+	width: 125%;
+	border: 1px solid blue;
+}
+
+input:focus{
+	border: 2px solid green;
+}
+
+select {
+	width: 100%;
+}
+
+.bg-green {
+	background-color: green;
+}
+
+.bg-blue {
+	background-color: blue;
+}
+
+.oneForm {
+	margin-left: 15px;
+}

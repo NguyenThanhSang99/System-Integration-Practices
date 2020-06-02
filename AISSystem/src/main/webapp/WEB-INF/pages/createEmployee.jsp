@@ -13,9 +13,8 @@
 <body>
 	<t:home>
 		<div class="content">
-			<h2 style="text-align:center; color:blue;">Create New Employee For Payroll</h2>
-	
-			<form:form method="POST" action="${pageContext.request.contextPath}/addPayrollEmployee" modelAttribute="employee">
+			<form:form method="POST" action="${pageContext.request.contextPath}/addPayrollEmployee" modelAttribute="employee" class="form">
+		         <h2 style="text-align:left; color:blue;">Create New Employee For Payroll</h2>
 		         <table border="0">
 		            <tr>
 		               <td class="hidden"></td>
@@ -66,7 +65,7 @@
 		            </tr>
 		            <tr>
 		               <td colspan="2">                   
-		                   <input type="submit" value="Create" />
+		                   <input type="submit" value="Create" class="create-btn bg-green"/>
 		               </td>
 		            </tr>
 		         </table>

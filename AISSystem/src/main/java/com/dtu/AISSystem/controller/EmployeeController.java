@@ -52,7 +52,11 @@ public class EmployeeController {
 	
 	@RequestMapping(value = { "/deletePayrollEmployee" }, method = RequestMethod.POST)
 	public String deleteEmployeePayroll(Model model, int employeeNumber) {
-		addAttributeResult(model, "Delete employee", employeeService.deleteEmployee(employeeNumber));
+		if(employeeNumber != 0) {
+			addAttributeResult(model, "Delete employee", employeeService.deleteEmployee(employeeNumber));
+		} else {
+			addAttributeResult(model, "Employee don't exist in Payroll. Delete in HR", true);
+		}
 		return "redirect:notification";
 	}
 	
@@ -70,12 +74,17 @@ public class EmployeeController {
 		List<PayRates> payratesList = payService.getPayRates();
 		model.addAttribute("payRatesList", payratesList);
 		model.addAttribute("employee", employeeService.getEmployeeByNumber(employeeNumber));
+		
 		return "updateEmployeePayroll";
 	}
 	
 	@RequestMapping(value = { "/updatePayrollEmployeeAction" }, method = RequestMethod.POST)
 	public String updateEmployeePayrollAction(Model model, @ModelAttribute("employee") Employee employee) {
-		addAttributeResult(model, "Update employee", employeeService.updateEmployee(employee));
+		if(employee.getEmployeeNumber() != 0) {
+			addAttributeResult(model, "Update employee", employeeService.updateEmployee(employee));
+		} else {
+			addAttributeResult(model, "Employee don't exist in Payroll. Update in HR", true);
+		}
 		return "redirect:notification";
 	}
 	

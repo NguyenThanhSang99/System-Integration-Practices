@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.sql.DataSource;
 
+import org.apache.commons.logging.impl.Log4JLogger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.support.JdbcDaoSupport;
 import org.springframework.stereotype.Repository;
@@ -20,7 +21,6 @@ public class EmployeeDAOImpl extends JdbcDaoSupport implements EmployeeDAO{
     public EmployeeDAOImpl(DataSource dataSource) {
         this.setDataSource(dataSource);
     }
-	
 	public List<Employee> listEmployee() {
 		String sql = "Select * from Employee";
  
@@ -79,6 +79,7 @@ public class EmployeeDAOImpl extends JdbcDaoSupport implements EmployeeDAO{
 	}
 
 	public Employee getEmployeeByNumber(int employeeNumber) {
+		Employee employee = new Employee();
 		try {
 			String sql = "SELECT * FROM `employee` WHERE `employee`.`Employee_Number` = " 
 					+ employeeNumber + ";";
@@ -86,11 +87,11 @@ public class EmployeeDAOImpl extends JdbcDaoSupport implements EmployeeDAO{
 	        EmployeeMapper mapper = new EmployeeMapper();
 	 
 	        List<Employee> list = this.getJdbcTemplate().query(sql, params, mapper);
-	        return list.get(0);
+	        employee = list.get(0);
 		} catch (Exception e) {
 			e.printStackTrace();
-			return new Employee();
 		}
+		return employee;
 	}
 
 }
