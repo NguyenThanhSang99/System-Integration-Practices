@@ -84,7 +84,12 @@
 		            </tr>
 		            <tr>
 		               <td>Shareholder_Status</td>
-		               <td><input id="Shareholder_Status" name="Shareholder_Status" type="checkbox"/></td>
+		               <td>
+		               		<select name="Shareholder_Status" id="Shareholder_Status">
+								  <option value="true">True</option>
+								  <option value="false">False</option>
+							</select>
+		               </td>
 		            </tr>
 		            <tr>
 		               <td>Benefit_Plans</td>

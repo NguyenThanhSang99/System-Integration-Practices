@@ -25,55 +25,55 @@
 		            </tr>
 		            <tr>
 		               <td>First Name</td>
-		               <td><input id="First_Name" name="First_Name" type="text"/></td>
+		               <td><input id="First_Name" name="First_Name" type="text" placeholder="Enter first name"/></td>
 		            </tr>
 		            <tr>
 		               <td>Last Name</td>
-		               <td><input id="Last_Name" name="Last_Name" type="text"/></td>
+		               <td><input id="Last_Name" name="Last_Name" type="text" placeholder="Enter last name"/></td>
 		            </tr>
 		            <tr>
 		               <td>Middle_Initial</td>
-		               <td><input id="Middle_Initial" name="Middle_Initial" type="text"/></td>
+		               <td><input id="Middle_Initial" name="Middle_Initial" type="text" placeholder="Enter middle initial"/></td>
 		            </tr>
 		            <tr>
 		               <td>Address1</td>
-		               <td><input id="Address1" name="Address1" type="text"/></td>
+		               <td><input id="Address1" name="Address1" type="text" placeholder="Enter first address"/></td>
 		            </tr>
 		            <tr>
 		               <td>Address2</td>
-		               <td><input id="Address2" name="Address2" type="text"/></td>
+		               <td><input id="Address2" name="Address2" type="text" placeholder="Enter second address"/></td>
 		            </tr>
 		            <tr>
 		               <td>City</td>
-		               <td><input id="City" name="City" type="text"/></td>
+		               <td><input id="City" name="City" type="text" placeholder="Enter city"/></td>
 		            </tr>
 		            <tr>
 		               <td>State</td>
-		               <td><input id="State" name="State" type="text"/></td>
+		               <td><input id="State" name="State" type="text" placeholder="Enter state"/></td>
 		            </tr>
 		            <tr>
 		               <td>Zip</td>
-		               <td><input id="Zip" name="Zip" type="text"/></td>
+		               <td><input id="Zip" name="Zip" type="text" placeholder="Enter zip"/></td>
 		            </tr>
 		            <tr>
 		               <td>Email</td>
-		               <td><input id="Email" name="Email" type="email"/></td>
+		               <td><input id="Email" name="Email" type="email" placeholder="Enter Email"/></td>
 		            </tr>
 		            <tr>
 		               <td>Phone_Number</td>
-		               <td><input id="Phone_Number" name="Phone_Number" type="text"/></td>
+		               <td><input id="Phone_Number" name="Phone_Number" type="text" placeholder="Enter phone number"/></td>
 		            </tr>
 		            <tr>
 		               <td>Social_Security_Number</td>
-		               <td><input id="Social_Security_Number" name="Social_Security_Number" type="number" required="required"/></td>
+		               <td><input id="Social_Security_Number" name="Social_Security_Number" type="number" required="required" placeholder="Enter social security number"/></td>
 		            </tr>
 		             <tr>
 		               <td>Drivers_License</td>
-		               <td><input id="Drivers_License" name="" type="text"/></td>
+		               <td><input id="Drivers_License" name="" type="text" placeholder="Enter drivers license"/></td>
 		            </tr>
 		            <tr>
 		               <td>Marital_Status</td>
-		               <td><input id="Marital_Status" name="Marital_Status" type="number"/></td>
+		               <td><input id="Marital_Status" name="Marital_Status" type="number" placeholder="Enter marital status"/></td>
 		            </tr>
 		            <tr>
 		               <td>Gender</td>
@@ -84,15 +84,20 @@
 		            </tr>
 		            <tr>
 		               <td>Shareholder_Status</td>
-		               <td><input id="Shareholder_Status" name="Shareholder_Status" type="checkbox"/></td>
+		               <td>
+		               		<select name="Shareholder_Status" id="Shareholder_Status">
+		               			<option value="false">False</option>
+								<option value="true">True</option>
+							</select>
+						</td>
 		            </tr>
 		            <tr>
 		               <td>Benefit_Plans</td>
-		               <td><input id="Benefit_Plans" name="Benefit_Plans" type="number"/></td>
+		               <td><input id="Benefit_Plans" name="Benefit_Plans" type="number" placeholder="Enter benefit plans"/></td>
 		            </tr>
 		            <tr>
 		               <td>Ethnicity</td>
-		               <td><input id="Ethnicity" name="Ethnicity" type="number"/></td>
+		               <td><input id="Ethnicity" name="Ethnicity" type="number" placeholder="Enter ethnicity"/></td>
 		            </tr>
 		         </table>
 		       </form>
@@ -121,7 +126,7 @@
 		            </tr>
 		             <tr>
 		               <td>PayRate</td>
-		               <td><form:input type="text" path="payRate"/></td>
+		               <td><form:input type="text" path="payRate" placeholder="Enter pay rate"/></td>
 		            </tr>
 		            <tr>
 		               <td>PayRates ID</td>
@@ -136,15 +141,15 @@
 		            </tr>
 		            <tr>
 		               <td>Vacation Days</td>
-		               <td><form:input type="number" path="vacationDays"/></td>
+		               <td><form:input type="number" path="vacationDays" placeholder="Enter vacation days"/></td>
 		            </tr>
 		            <tr>
 		               <td>Paid to date</td>
-		               <td><form:input type="number" path="paidToDate"/></td>
+		               <td><form:input type="number" path="paidToDate" placeholder="Enter paid to date"/></td>
 		            </tr>
 		            <tr>
 		               <td>Paid last year</td>
-		               <td><form:input type="number" path="paidLastYear"/></td>
+		               <td><form:input type="number" path="paidLastYear" placeholder="Enter paid last year"/></td>
 		            </tr>
 		         </table>
 		      </form:form>
