@@ -43,11 +43,21 @@ public class EmployeeController {
 	@RequestMapping(value = { "/addPayrollEmployee" }, method = RequestMethod.POST)
 	public String addEmployeePayroll(Model model, @ModelAttribute("employee") Employee employee) {
 		List<Employee> employeeList = employeeService.getEmployee();
-		int employeeNumber = 1000+employeeList.size()+1;
-		employee.setEmployeeNumber(employeeNumber);
-		
-		addAttributeResult(model, "Add employee", employeeService.createEmployee(employee));
-		return "redirect:notification";
+		int id = 1000;
+		for (Employee employee2 : employeeList) {
+			if(employee2.getEmployeeNumber() > id) {
+				id = employee2.getEmployeeNumber();
+			}
+		}
+		employee.setEmployeeNumber(++id);
+		if(!employeeService.createEmployee(employee)) {
+			if(!employeeService.updateEmployee(employee)) {
+				addAttributeResult(model, "Add employee", false);
+				return "redirect:notification";
+			}
+		}
+		addAttributeResult(model, "Add employee", true);
+		return "redirect:home";
 	}
 	
 	@RequestMapping(value = { "/deletePayrollEmployee" }, method = RequestMethod.POST)
@@ -57,7 +67,7 @@ public class EmployeeController {
 		} else {
 			addAttributeResult(model, "Employee don't exist in Payroll. Delete in HR", true);
 		}
-		return "redirect:notification";
+		return "redirect:home";
 	}
 	
 	@RequestMapping(value = "/updateEmployee", method = RequestMethod.POST)
@@ -85,7 +95,7 @@ public class EmployeeController {
 		} else {
 			addAttributeResult(model, "Employee don't exist in Payroll. Update in HR", true);
 		}
-		return "redirect:notification";
+		return "redirect:home";
 	}
 	
 	@RequestMapping(value = "/createHRPersonal", method = RequestMethod.POST)

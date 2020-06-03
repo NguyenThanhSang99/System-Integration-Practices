@@ -20,8 +20,8 @@
 				<h3>Human Resources</h3>
 		         <table border="0">
 		         	<tr>
-		               <td class="hidden">Employee ID</td>
-		               <td><input id="Employee_ID" name="Employee_ID" type="number" class="hidden"/></td>
+		               <td>Employee ID</td>
+		               <td><input id="Employee_ID" name="Employee_ID" type="number" placeholder="Enter Employee ID"/></td>
 		            </tr>
 		            <tr>
 		               <td>First Name</td>

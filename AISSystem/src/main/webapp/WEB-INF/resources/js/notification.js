@@ -11,15 +11,15 @@ function getData(){
         	var dict = [];
         	var dict_check = [];
         	for(var j = 0; j<=row; j++){
-        		if(tbl.rows[j].cells[3].innerHTML){
-        			dict.push(tbl.rows[j].cells[3].innerHTML);
+        		if(tbl.rows[j].cells[4].innerHTML){
+        			dict.push(tbl.rows[j].cells[4].innerHTML);
         		}
         	}
             if(data){
                 var len = data.length;
                 var txt = "";
                 for(var i=0;i<len;i++){
-                	var r = dict.indexOf(data[i].Social_Security_Number);
+                	var r = dict.indexOf(String(data[i].Employee_ID));
                 	var id_HR = data[i].Employee_ID;
                 	var nameInHR = (data[i].First_Name===null?"":data[i].First_Name) + " " + (data[i].Last_Name===null?"":data[i].Last_Name);
                 	var emp_HR = {
@@ -31,13 +31,13 @@ function getData(){
                 	if(r>=0){
                 		var emp_Payroll = {
                 			employeeNumber: tbl.rows[r].cells[0].innerHTML,
-                    		firstName: tbl.rows[r].cells[1].innerHTML,
-                    		lastName: tbl.rows[r].cells[2].innerHTML,
+                    		firstName: (String(tbl.rows[r].cells[1].innerHTML)!=='null'?tbl.rows[r].cells[1].innerHTML:""),
+                    		lastName: (String(tbl.rows[r].cells[2].innerHTML)!=='null'?tbl.rows[r].cells[2].innerHTML:""),
                     		ssn: tbl.rows[r].cells[3].innerHTML,
                     		id: tbl.rows[r].cells[4].innerHTML
                         }
-                		var nameInPayroll = tbl.rows[r].cells[1].innerHTML + " " + tbl.rows[r].cells[2].innerHTML;
-                		if(nameInHR !== nameInPayroll){
+                		var nameInPayroll = emp_Payroll.firstName + " " + emp_Payroll.lastName;
+                		if(nameInHR !== nameInPayroll || emp_HR.ssn !== emp_Payroll.ssn){
                 			
                 			var content = "Name in HR and Payroll conflict: " + nameInHR + " and " + nameInPayroll;
                 			

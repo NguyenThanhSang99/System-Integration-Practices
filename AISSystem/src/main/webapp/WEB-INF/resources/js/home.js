@@ -17,14 +17,14 @@ function getData(){
         	var row = tbl.rows.length - 1;
         	var dict = [];
         	for(var j = 1; j<=row; j++){
-        		dict.push(tbl.rows[j].cells[5].innerHTML);
+        		dict.push(tbl.rows[j].cells[9].innerHTML);
         	}
             if(data){
                 len.value = data.length;
                 var txt = "";
                 if(len.value > 0){
                     for(var i=0;i<len.value;i++){
-                    	var c = dict.indexOf(data[i].Social_Security_Number);
+                    	var c = dict.indexOf(String(data[i].Employee_ID));
                     	var firstName = data[i].First_Name;
                     	var lastName = data[i].Last_Name;
                     	if(c>=0){
@@ -198,4 +198,15 @@ function deleteEmployee(empNumber, idEmployee, firstName, lastName){
 		}
 	});
 	postAndRedirect("/AISSystem/deletePayrollEmployee", emp_post);
+}
+
+//Display popup
+function displayPopupMessage(message) {
+    document.document.getElementById('table').
+    notificationPopup.style.display = "block";
+    setTimeout(closePopup(), 5000);
+}
+function closePopup() {
+    var notificationPopup = document.getElementById("notification-popup");
+    notificationPopup.style.display = "none";
 }
