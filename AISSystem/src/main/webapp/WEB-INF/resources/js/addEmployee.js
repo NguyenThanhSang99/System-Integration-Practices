@@ -7,9 +7,13 @@ function SubForm(){
         dataType:"json", //to parse string into JSON object,
         success: function(data){
         	list = data;
-        }});
+    }});
 	setTimeout(() => {
 		var id = document.getElementById("Employee_ID").value;
+		if(id == '') {
+			alert("Employee ID do not empty. Please enter ID!!!");
+			return;
+		}
     	document.getElementById("emp_id").value = id;
     	$.ajax({
             url:'http://localhost:19335/api/Personals/Create',

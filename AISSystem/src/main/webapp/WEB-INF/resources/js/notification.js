@@ -37,13 +37,14 @@ function getData(){
                     		id: tbl.rows[r].cells[4].innerHTML
                         }
                 		var nameInPayroll = emp_Payroll.firstName + " " + emp_Payroll.lastName;
-                		if(nameInHR !== nameInPayroll || emp_HR.ssn !== emp_Payroll.ssn){
+                		var content1 = "Update in HR";
+            			var content2 = "Update in Payroll";
+                		if(nameInHR !== nameInPayroll){
+                			var content = "Name of an employee in HR and Payroll conflict: " + nameInHR + " and " + nameInPayroll;
                 			
-                			var content = "Name in HR and Payroll conflict: " + nameInHR + " and " + nameInPayroll;
-                			
-                			var content1 = "Update in HR";
-                			
-                			var content2 = "Update in Payroll";
+                			addNotification(content, content1, content2, emp_HR, emp_Payroll);
+                		} else if(emp_HR.ssn !== emp_Payroll.ssn && emp_Payroll.ssn !== '0'){
+                			var content = "Social Security Number of an employee in HR and Payroll conflict: " + nameInHR;
                 			
                 			addNotification(content, content1, content2, emp_HR, emp_Payroll);
                 		}

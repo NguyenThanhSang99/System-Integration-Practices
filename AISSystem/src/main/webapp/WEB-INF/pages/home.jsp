@@ -44,11 +44,11 @@
 			        		<th scope="col">Last Name</th>
 			        		<th scope="col">Address1</th>
 			        		<th scope="col">City</th>
-			        		<th scope="col">State</th>
 			        		<th scope="col">SSN</th>
 			        		<th scope="col">Email</th>
 			        		<th scope="col">Phone Number</th>
 			        		<th scope="col">Gender</th>
+			        		<th scope="col">Pay Rate</th>
 			        		<th scope="col" class="hidden">Employee ID</th>
 			        		<th>Update</th>
 			        		<th>Delete</th>
@@ -61,11 +61,11 @@
 							  <td>${emp.lastName}</td>
 							  <td></td>
 							  <td></td>
-							  <td></td>
 							  <td>${emp.ssn}</td>
 							  <td></td>
 							  <td></td>
 							  <td></td>
+							  <td>${emp.payRate}</td>
 							  <td class="hidden">${emp.idEmployee}</td>
 							  <td onclick="updateEmployee(${emp.employeeNumber}, ${emp.idEmployee })"><i class="fas fa-user-edit blue icon-emp"></i></td>
 							  <td onclick="deleteEmployee(${emp.employeeNumber}, ${emp.idEmployee }, '${emp.firstName }', '${emp.lastName }')"><i class="fas fa-user-minus red icon-emp"></i></td>

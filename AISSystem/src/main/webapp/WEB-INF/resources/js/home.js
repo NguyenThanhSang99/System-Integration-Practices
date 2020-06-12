@@ -1,5 +1,4 @@
 let len = {value:0};
-let share_holders = new Array();
 let male_ratio = {value:0};
 let female_ratio = {value: 0};
 var value = 0;
@@ -33,23 +32,21 @@ function getData(){
                 			tbl.rows[r].cells[1].innerHTML = (lastName==null?"":lastName);
                 			tbl.rows[r].cells[2].innerHTML = (data[i].Address1==null?"":data[i].Address1);
                 			tbl.rows[r].cells[3].innerHTML = (data[i].City==null?"":data[i].City);
-                			tbl.rows[r].cells[4].innerHTML = (data[i].State==null?"":data[i].State);
-                			tbl.rows[r].cells[5].innerHTML = (data[i].Social_Security_Number==null?"":data[i].Social_Security_Number);
-                			tbl.rows[r].cells[6].innerHTML = (data[i].Email==null?"":data[i].Email);
-                			tbl.rows[r].cells[7].innerHTML = (data[i].Phone_Number==null?"":data[i].Phone_Number);
-                			tbl.rows[r].cells[8].innerHTML = (data[i].Gender==true?"Male":"Female");
+                			tbl.rows[r].cells[4].innerHTML = (data[i].Social_Security_Number==null?"":data[i].Social_Security_Number);
+                			tbl.rows[r].cells[5].innerHTML = (data[i].Email==null?"":data[i].Email);
+                			tbl.rows[r].cells[6].innerHTML = (data[i].Phone_Number==null?"":data[i].Phone_Number);
+                			tbl.rows[r].cells[7].innerHTML = (data[i].Gender==true?"Male":"Female");
                     		row--;
                     	} else {
-                    		var deleteEmp = ""
                     		txt += "<tr><td>"+(firstName==null?"":firstName)
                             +"</td><td>"+(lastName==null?"":lastName)
                             +"</td><td>"+(data[i].Address1==null?"":data[i].Address1)
                             +"</td><td>"+(data[i].City==null?"":data[i].City)
-                            +"</td><td>"+(data[i].State==null?"":data[i].State)
                             +"</td><td>"+(data[i].Social_Security_Number==null?"":data[i].Social_Security_Number)
                             +"</td><td>"+(data[i].Email==null?"":data[i].Email)
                             +"</td><td>"+(data[i].Phone_Number==null?"":data[i].Phone_Number)
                             +"</td><td>"+(data[i].Gender==true?"Male":"Female")
+                            +"</td><td>"
                             +"</td><td onclick='updateEmployee(0, " + data[i].Employee_ID + ")'><i class='fas fa-user-edit blue icon-emp'></i>"
 							+"</td><td onclick='deleteEmployee(0, " + data[i].Employee_ID + ", `" + firstName + "`, `"
         							+ lastName + "`)'><i class='fas fa-user-minus red icon-emp'></i>"
