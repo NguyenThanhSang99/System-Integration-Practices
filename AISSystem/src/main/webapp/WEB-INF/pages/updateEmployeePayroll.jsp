@@ -22,23 +22,23 @@
 		            </tr>
 		            <tr>
 		               <td>Employee ID</td>
-		               <td><form:input type="number" path="idEmployee"/></td>
+		               <td><form:input type="number" path="idEmployee" placeholder="Enter Employee ID"/></td>
 		            </tr>
 		            <tr>
 		               <td>Last Name</td>
-		               <td><form:input type="text" path="lastName"/></td>
+		               <td><form:input type="text" path="lastName" placeholder="Enter Last Name"/></td>
 		            </tr>
 		            <tr>
 		               <td>First Name</td>
-		               <td><form:input type="text" path="firstName"/></td>
+		               <td><form:input type="text" path="firstName" placeholder="Enter First Name"/></td>
 		            </tr>
 		            <tr>
 		               <td>SSN</td>
-		               <td><form:input type="number" path="ssn"/></td>
+		               <td><form:input type="number" path="ssn" placeholder="Enter SSN"/></td>
 		            </tr>
 		            <tr>
 		               <td>PayRate</td>
-		               <td><form:input type="text" path="payRate"/></td>
+		               <td><form:input type="text" path="payRate" placeholder="Enter PayRate"/></td>
 		            </tr>
 		            <tr>
 		               <td>PayRates ID</td>
@@ -52,15 +52,15 @@
 		            </tr>
 		            <tr>
 		               <td>Vacation Days</td>
-		               <td><form:input type="number" path="vacationDays"/></td>
+		               <td><form:input type="number" path="vacationDays" placeholder="Enter Vocation Days"/></td>
 		            </tr>
 		            <tr>
 		               <td>Paid to date</td>
-		               <td><form:input type="number" path="paidToDate"/></td>
+		               <td><form:input type="number" path="paidToDate" placeholder="Enter Paid to date"/></td>
 		            </tr>
 		            <tr>
 		               <td>Paid last year</td>
-		               <td><form:input type="number" path="paidLastYear"/></td>
+		               <td><form:input type="number" path="paidLastYear" placeholder="Enter Paid Last Year"/></td>
 		            </tr>
 		            <tr>
 		               <td colspan="2">                   

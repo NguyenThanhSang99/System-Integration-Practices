@@ -21,59 +21,59 @@
 		         <table border="0">
 		         	<tr>
 		               <td class="hidden">Employee ID</td>
-		               <td><input id="Employee_ID" name="Employee_ID" type="number" class="hidden" value="${param.employeeId }"/></td>
+		               <td><input id="Employee_ID" name="Employee_ID" type="number" placeholder="Enter Employee ID" class="hidden" value="${param.employeeId }"/></td>
 		            </tr>
 		            <tr>
 		               <td>First Name</td>
-		               <td><input id="First_Name" name="First_Name" type="text"/></td>
+		               <td><input id="First_Name" name="First_Name" type="text" placeholder="Enter First Name"/></td>
 		            </tr>
 		            <tr>
 		               <td>Last Name</td>
-		               <td><input id="Last_Name" name="Last_Name" type="text"/></td>
+		               <td><input id="Last_Name" name="Last_Name" type="text" placeholder="Enter Last Name"/></td>
 		            </tr>
 		            <tr>
 		               <td>Middle_Initial</td>
-		               <td><input id="Middle_Initial" name="Middle_Initial" type="text"/></td>
+		               <td><input id="Middle_Initial" name="Middle_Initial" type="text" placeholder="Enter Middle Initial"/></td>
 		            </tr>
 		            <tr>
 		               <td>Address1</td>
-		               <td><input id="Address1" name="Address1" type="text"/></td>
+		               <td><input id="Address1" name="Address1" type="text" placeholder="Enter Address 1"/></td>
 		            </tr>
 		            <tr>
 		               <td>Address2</td>
-		               <td><input id="Address2" name="Address2" type="text"/></td>
+		               <td><input id="Address2" name="Address2" type="text" placeholder="Enter Address 2"/></td>
 		            </tr>
 		            <tr>
 		               <td>City</td>
-		               <td><input id="City" name="City" type="text"/></td>
+		               <td><input id="City" name="City" type="text" placeholder="Enter City"/></td>
 		            </tr>
 		            <tr>
 		               <td>State</td>
-		               <td><input id="State" name="State" type="text"/></td>
+		               <td><input id="State" name="State" type="text" placeholder="Enter State"/></td>
 		            </tr>
 		            <tr>
 		               <td>Zip</td>
-		               <td><input id="Zip" name="Zip" type="text"/></td>
+		               <td><input id="Zip" name="Zip" type="text" placeholder="Enter Zip"/></td>
 		            </tr>
 		            <tr>
 		               <td>Email</td>
-		               <td><input id="Email" name="Email" type="email"/></td>
+		               <td><input id="Email" name="Email" type="email" placeholder="Enter Email"/></td>
 		            </tr>
 		            <tr>
 		               <td>Phone_Number</td>
-		               <td><input id="Phone_Number" name="Phone_Number" type="text"/></td>
+		               <td><input id="Phone_Number" name="Phone_Number" type="text" placeholder="Enter Phone Number"/></td>
 		            </tr>
 		            <tr>
 		               <td>Social_Security_Number</td>
-		               <td><input id="Social_Security_Number" name="Social_Security_Number" type="number" required="required"/></td>
+		               <td><input id="Social_Security_Number" name="Social_Security_Number" type="number" required="required" placeholder="Enter Social Security Number"/></td>
 		            </tr>
 		             <tr>
 		               <td>Drivers_License</td>
-		               <td><input id="Drivers_License" name="" type="text"/></td>
+		               <td><input id="Drivers_License" name="" type="text" placeholder="Enter Drivers License"/></td>
 		            </tr>
 		            <tr>
 		               <td>Marital_Status</td>
-		               <td><input id="Marital_Status" name="Marital_Status" type="number"/></td>
+		               <td><input id="Marital_Status" name="Marital_Status" type="number" placeholder="Enter Marital Status"/></td>
 		            </tr>
 		            <tr>
 		               <td>Gender</td>
@@ -93,11 +93,12 @@
 		            </tr>
 		            <tr>
 		               <td>Benefit_Plans</td>
-		               <td><input id="Benefit_Plans" name="Benefit_Plans" type="number"/></td>
+		               <td><select name="Benefit_Plans" id="Benefit_Plans">
+		               		 </select></td>
 		            </tr>
 		            <tr>
 		               <td>Ethnicity</td>
-		               <td><input id="Ethnicity" name="Ethnicity" type="number"/></td>
+		               <td><input id="Ethnicity" name="Ethnicity" type="number" placeholder="Enter Ethnicity"/></td>
 		            </tr>
 		         </table>
 		       </form>
@@ -122,11 +123,11 @@
 		            </tr>
 		            <tr class="hidden">
 		               <td>SSN</td>
-		               <td><form:input id="ssn" type="number" path="ssn"/></td>
+		               <td><form:input id="ssn" type="number" path="ssn" placeholder="Enter Marital Status"/></td>
 		            </tr>
 		             <tr>
 		               <td>PayRate</td>
-		               <td><form:input type="text" path="payRate"/></td>
+		               <td><form:input type="text" path="payRate" placeholder="Enter PayRate"/></td>
 		            </tr>
 		            <tr>
 		               <td>PayRates ID</td>
@@ -141,15 +142,15 @@
 		            </tr>
 		            <tr>
 		               <td>Vacation Days</td>
-		               <td><form:input type="number" path="vacationDays"/></td>
+		               <td><form:input type="number" path="vacationDays" placeholder="Enter Vacation Days"/></td>
 		            </tr>
 		            <tr>
 		               <td>Paid to date</td>
-		               <td><form:input type="number" path="paidToDate"/></td>
+		               <td><form:input type="number" path="paidToDate" placeholder="Enter Paid to date"/></td>
 		            </tr>
 		            <tr>
 		               <td>Paid last year</td>
-		               <td><form:input type="number" path="paidLastYear"/></td>
+		               <td><form:input type="number" path="paidLastYear" placeholder="Enter Paid last year"/></td>
 		            </tr>
 		         </table>
 		      </form:form>

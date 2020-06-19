@@ -87,7 +87,10 @@
 		            </tr>
 		            <tr>
 		               <td>Benefit_Plans</td>
-		               <td><input id="Benefit_Plans" name="Benefit_Plans" type="number"/></td>
+		               <td>
+		               	<select name="Benefit_Plans" id="Benefit_Plans">
+		               		 </select>
+		               	</td>
 		            </tr>
 		            <tr>
 		               <td>Ethnicity</td>

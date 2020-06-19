@@ -1,3 +1,7 @@
+::placeholder {
+  color: #ccc;
+  opacity: 1; /* Firefox */
+}
 .hidden {
 	display: none;
 }
